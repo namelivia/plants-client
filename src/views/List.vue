@@ -1,26 +1,23 @@
 <template>
   <section>
-    <h1> PLANT LIST</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Picture</th>
-                <th>Species</th>
-                <th>Days until next watering</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr v-for='plant in plants' :key='plant.id'>
-                <td>{{plant.name}}</td>
-                <td><img :src='plant.image_url' width="200" height="200"/></td>
-                <td>{{plant.species}}</td>
-                <td>{{plant.days_until_watering}}</td>
-                <td><button>Water it</button></td>
-            </tr>
-        </tbody>
-    </table>
+    <h1>PLANT LIST</h1>
+    <b-card-group columns>
+        <b-card v-for='plant in plants' :key='plant.id'
+            :title="plant.name"
+            :img-src="plant.image_url"
+            :img-alt="plant.name"
+            img-top
+            style="max-width: 20rem;"
+            class="mb-2"
+        >
+            <b-card-text>
+              Species: {{plant.species}}<br />
+              Days unitl watering: {{plant.days_until_watering}}
+            </b-card-text>
+
+            <b-button variant="primary">Water it</b-button>
+        </b-card>
+    </b-card-group>
   </section>
 </template>
 
