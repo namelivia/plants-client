@@ -10,5 +10,10 @@ export default new Router({
         path: '/',
         name: 'welcome',
         component: () => import ('./views/Welcome.vue')
-    }]
+    }, {
+        path: '/list',
+        name: 'list',
+        component: () => import ('./views/List.vue')
+    }
+    ]
 })
