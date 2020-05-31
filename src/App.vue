@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="plants-background min-vh-100">
 <b-navbar toggleable="lg" type="dark" variant="info">
     <b-navbar-brand to="/">Plants App</b-navbar-brand>
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -9,7 +9,7 @@
       </b-navbar-nav>
     </b-collapse>
 </b-navbar>
-        <b-container class="mt-2">
+        <b-container class="pt-2 bg-light text-dark">
             <router-view></router-view>
         </b-container>
     </div>
