@@ -8,18 +8,21 @@
     )
 </template>
 <script>
-    export default {
-        props: {
-            scientificName : {
-                type: String
-            },
-            commonName : {
-                type: String
-            },
-            imageUrl : {
-                type: String,
-                default: 'https://e-fisiomedic.com/wp-content/uploads/2013/11/default-placeholder.png'
-            }
-        },
-    }
+export default {
+  props: {
+    scientificName: {
+      type: String,
+      default: "",
+    },
+    commonName: {
+      type: String,
+      default: "",
+    },
+    imageUrl: {
+      type: String,
+      default:
+        "https://e-fisiomedic.com/wp-content/uploads/2013/11/default-placeholder.png",
+    },
+  },
+};
 </script>

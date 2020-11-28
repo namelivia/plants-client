@@ -49,59 +49,59 @@ section
 </template>
 
 <script>
-    import Suggestion from './components/Suggestion'
-    export default {
-        components: {
-            'suggestion': Suggestion
-        },
-        data () {
-            return {
-                form: {
-                    name: '',
-                    description: null,
-                },
-                show: true,
-				results: null
-            }
-        },
-        methods: {
-            async onSubmit(evt) {
-                evt.preventDefault()
-                const response = await this.$axios.post("http://localhost/plants",this.form);
-                this.$bvToast.toast(`Plant ${this.form.name} created`, {
-          			title: 'Success',
-					variant: 'success',
-					solid: true
-        		})
-                this.onReset()
-            },
-            async search(query) {
-                if (query.length > 3) {
-                    this.$axios
-                    .get(`http://localhost:80/species?query=${query}`)
-                    .then(response => this.results = response.data.data)
-                    .catch((error) => {
-                        this.$bvToast.toast(`Trefle doesnt work`, {
-                            title: 'Error',
-                            variant: 'danger',
-                            solid: true
-                        })
-                    })
-                }
-            },
-            onReset(evt) {
-                if (evt) {
-                    evt.preventDefault()
-                }
-                this.form.name = ''
-                this.form.description = null
-                this.form.species = null
-                this.results = null
-                this.show = false
-                this.$nextTick(() => {
-                  this.show = true
-                })
-            }
-        }
-    }
+import Suggestion from "./components/Suggestion";
+export default {
+  components: {
+    suggestion: Suggestion,
+  },
+  data() {
+    return {
+      form: {
+        name: "",
+        description: null,
+      },
+      show: true,
+      results: null,
+    };
+  },
+  methods: {
+    async onSubmit(evt) {
+      evt.preventDefault();
+      await this.$axios.post("http://localhost/plants", this.form);
+      this.$bvToast.toast(`Plant ${this.form.name} created`, {
+        title: "Success",
+        variant: "success",
+        solid: true,
+      });
+      this.onReset();
+    },
+    async search(query) {
+      if (query.length > 3) {
+        this.$axios
+          .get(`http://localhost:80/species?query=${query}`)
+          .then((response) => (this.results = response.data.data))
+          .catch(() => {
+            this.$bvToast.toast(`Trefle doesnt work`, {
+              title: "Error",
+              variant: "danger",
+              solid: true,
+            });
+          });
+      }
+    },
+    onReset(evt) {
+      if (evt) {
+        evt.preventDefault();
+      }
+      this.form.name = "";
+      this.form.description = null;
+      this.form.species = null;
+      this.results = null;
+      this.show = false;
+      this.$nextTick(() => {
+        this.show = true;
+      });
+    },
+  },
+};
 </script>

@@ -12,7 +12,7 @@
 </template>
 
 <style lang="scss">
-    @import './assets/styles/custom.scss';
-    @import '../node_modules/bootstrap/dist/css/bootstrap.css';
-    @import '../node_modules/bootstrap-vue/dist/bootstrap-vue.css';
+@import "./assets/styles/custom.scss";
+@import "../node_modules/bootstrap/dist/css/bootstrap.css";
+@import "../node_modules/bootstrap-vue/dist/bootstrap-vue.css";
 </style>
