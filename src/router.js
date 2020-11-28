@@ -14,6 +14,9 @@ export default new Router({
         path: '/list',
         name: 'list',
         component: () => import ('./views/List.vue')
-    }
-    ]
+    }, {
+        path: '/new',
+        name: 'new',
+        component: () => import ('./views/New/New.vue')
+    }]
 })

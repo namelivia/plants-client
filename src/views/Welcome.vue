@@ -1,5 +1,4 @@
-<template>
-    <section>
-        <h1> PLANTS APP </h1>
-    </section>
+<template lang="pug">
+    section
+        h1 PLANTS APP
 </template>

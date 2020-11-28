@@ -1,25 +1,20 @@
-<template>
-  <section>
-    <h1>PLANT LIST</h1>
-    <b-card-group columns>
-        <b-card v-for='plant in plants' :key='plant.id'
+<template lang="pug">
+section
+    h1 PLANT LIST
+    b-card-group(columns)
+        b-card.mb-2(
+            v-for='plant in plants' :key='plant.id'
             :title="plant.name"
             :img-src="plant.image_url"
             :img-alt="plant.name"
             img-top
             style="max-width: 20rem;"
-            class="mb-2"
-        >
-            <b-card-text>
-              Species: {{plant.species}}<br />
-              Days unitl watering: {{plant.days_until_watering}}
-            </b-card-text>
-
-            <b-button variant="primary">Water it</b-button>
-            <b-button variant="danger" class="ml-2">Delete it</b-button>
-        </b-card>
-    </b-card-group>
-  </section>
+        )
+            b-card-text
+                p.mb-0 Species: {{plant.species}}
+                p Days until watering: {{plant.days_until_watering}}
+            b-button(variant="primary") Water it
+            b-button.ml-2(variant="danger") Delete it
 </template>
 
 <script>
