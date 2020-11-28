@@ -38,20 +38,22 @@ section
             v-on:input="search"
         )
         b-card-group(columns)
-            b-card.mb-2(
+            suggestion(
                 v-for='result in results' :key='result.id'
-                :title="result.scientific_name"
-                :img-src="result.image_url ? result.image_url : 'https://e-fisiomedic.com/wp-content/uploads/2013/11/default-placeholder.png'"
-                :img-alt="result.common_name"
-                img-top
-                style="max-width: 20rem;"
+                :scientific-name="result.scientific_name"
+                :common-name="result.common_name"
+                :image-url="result.image_url || undefined"
             )
         b-button(type="submit" variant="primary") Submit
         b-button(type="reset" variant="danger") Reset
 </template>
 
 <script>
+    import Suggestion from './components/Suggestion'
     export default {
+        components: {
+            'suggestion': Suggestion
+        },
         data () {
             return {
                 form: {
