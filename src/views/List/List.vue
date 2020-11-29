@@ -2,23 +2,21 @@
 section
     h1 PLANT LIST
     b-card-group(columns)
-        b-card.mb-2(
+        plant(
             v-for='plant in plants' :key='plant.id'
-            :title="plant.name"
-            :img-src="plant.image_url"
-            :img-alt="plant.name"
-            img-top
-            style="max-width: 20rem;"
+            :name="plant.name"
+            :image-url="plant.image_url"
+            :species="plant.species"
+            :days-until-watering="plant.days_until_watering"
         )
-            b-card-text
-                p.mb-0 Species: {{plant.species}}
-                p Days until watering: {{plant.days_until_watering}}
-            b-button(variant="primary") Water it
-            b-button.ml-2(variant="danger") Delete it
 </template>
 
 <script>
+import Plant from "./components/Plant";
 export default {
+  components: {
+    plant: Plant,
+  },
   data: function () {
     //TODO: This will be empty, not it's just a stub
     return {

@@ -7,7 +7,7 @@
             b-navbar-nav
                 b-nav-item(to="list") List
                 b-nav-item(to="new") New
-    b-container.pt2.bg-light.text-dark
+    b-container.bg-light.text-dark.pb-4.pt-4
         router-view
 </template>
 
