@@ -23,18 +23,19 @@ export default {
       loading: true,
     };
   },
-  mounted: function () {
-    this.$axios
-      .get(`http://localhost:80/plants`)
-      .then((response) => (this.plants = response.data))
-      .catch(() => {
-        this.$bvToast.toast(`Plants can't be retrieved`, {
-          title: "Error",
-          variant: "danger",
-          solid: true,
-        });
-      })
-      .finally(() => (this.loading = false));
+  mounted: async function () {
+    try {
+      const response = this.$axios.get(`http://localhost:80/plants`);
+      this.plants = response.data;
+    } catch (err) {
+      this.$bvToast.toast(`Plants can't be retrieved`, {
+        title: "Error",
+        variant: "danger",
+        solid: true,
+      });
+    } finally {
+      this.loading = false;
+    }
   },
 };
 </script>

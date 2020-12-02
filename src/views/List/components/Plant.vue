@@ -33,5 +33,19 @@ export default {
         "https://e-fisiomedic.com/wp-content/uploads/2013/11/default-placeholder.png",
     },
   },
+  methods: {
+    async onDelete(evt) {
+      evt.preventDefault();
+      try {
+        await this.$axios.post("http://localhost/plants", this.form);
+      } catch (err) {
+        this.$bvToast.toast(`Plant could not be created`, {
+          title: "Error",
+          variant: "danger",
+          solid: true,
+        });
+      }
+    },
+  },
 };
 </script>

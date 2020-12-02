@@ -70,27 +70,37 @@ export default {
   },
   methods: {
     async onSubmit(evt) {
-      evt.preventDefault();
-      await this.$axios.post("http://localhost/plants", this.form);
-      this.$bvToast.toast(`Plant ${this.form.name} created`, {
-        title: "Success",
-        variant: "success",
-        solid: true,
-      });
-      this.onReset();
+      try {
+        evt.preventDefault();
+        await this.$axios.post("http://localhost/plants", this.form);
+        this.$bvToast.toast(`Plant ${this.form.name} created`, {
+          title: "Success",
+          variant: "success",
+          solid: true,
+        });
+        this.onReset();
+      } catch (err) {
+        this.$bvToast.toast(`Plant could not be created`, {
+          title: "Error",
+          variant: "danger",
+          solid: true,
+        });
+      }
     },
     async search(query) {
       if (query.length > 3) {
-        this.$axios
-          .get(`http://localhost:80/species?query=${query}`)
-          .then((response) => (this.results = response.data.data))
-          .catch(() => {
-            this.$bvToast.toast(`Trefle doesnt work`, {
-              title: "Error",
-              variant: "danger",
-              solid: true,
-            });
+        try {
+          const response = this.$axios.get(
+            `http://localhost:80/species?query=${query}`
+          );
+          this.results = response.data.data;
+        } catch (err) {
+          this.$bvToast.toast(`Trefle doesn't work`, {
+            title: "Error",
+            variant: "danger",
+            solid: true,
           });
+        }
       }
     },
     onReset(evt) {
