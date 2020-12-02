@@ -3,40 +3,43 @@ section
     h1 Add new plant
     b-form(@submit="onSubmit" @reset="onReset"  v-if="show")
         b-form-group(
-            id="input-group-1"
+            id="name-input-group"
             label="Name:"
-            label-for="input-1"
+            label-for="name"
         )
-        b-form-input(
-            id="input-1"
-            v-model="form.name"
-            type="text"
-            required
-            placeholder="Enter plant name"
-        )
+            b-form-input(
+                id="name"
+                name="name"
+                v-model="form.name"
+                type="text"
+                required
+                placeholder="Enter plant name"
+            )
         b-form-group(
-            id="input-group-2"
+            id="description-input-group"
             label="Description:"
-            label-for="input-1"
+            label-for="description"
         )
-        b-form-input(
-            id="input-1"
-            v-model="form.description"
-            type="text"
-            placeholder="Enter description of the plant"
-        )
+            b-form-input(
+                id="description"
+                name="description"
+                v-model="form.description"
+                type="text"
+                placeholder="Enter description of the plant"
+            )
         b-form-group(
-            id="input-group-2"
+            id="species-input-group"
             label="Species:"
-            label-for="input-1"
+            label-for="species"
         )
-        b-form-input(
-            id="input-1"
-            v-model="form.species"
-            type="text"
-            placeholder="Enter species of the plant"
-            v-on:input="search"
-        )
+            b-form-input(
+                id="species"
+                name="species"
+                v-model="form.species"
+                type="text"
+                placeholder="Enter species of the plant"
+                v-on:input="search"
+            )
         b-card-group(columns)
             suggestion(
                 v-for='result in results' :key='result.id'
@@ -44,7 +47,8 @@ section
                 :common-name="result.common_name"
                 :image-url="result.image_url || undefined"
             )
-        b-button(type="submit" variant="primary") Submit
+        .mt-4
+        b-button.mr-2(type="submit" variant="primary") Submit
         b-button(type="reset" variant="danger") Reset
 </template>
 
