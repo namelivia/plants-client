@@ -7,10 +7,11 @@
         style="max-width: 20rem;"
     )
         b-card-text
+            p.mb-0 Id: {{id}}
             p.mb-0 Species: {{species}}
             p Days until watering: {{daysUntilWatering}}
         b-button(variant="primary") Water it
-        b-button.ml-2(variant="danger") Delete it
+        b-button.ml-2(variant="danger" v-on:click="onDelete") Delete it
 </template>
 <script>
 export default {
@@ -18,6 +19,10 @@ export default {
     name: {
       type: String,
       default: "",
+    },
+    id: {
+      type: Number,
+      default: 0,
     },
     species: {
       type: String,
@@ -37,9 +42,11 @@ export default {
     async onDelete(evt) {
       evt.preventDefault();
       try {
-        await this.$axios.post("http://localhost/plants", this.form);
+        await this.$axios.delete(`http://localhost/plants/${this.id}`);
+        this.$emit("plant-removed", this.id);
       } catch (err) {
-        this.$bvToast.toast(`Plant could not be created`, {
+        console.log(err);
+        this.$bvToast.toast(`Plant could not be removed`, {
           title: "Error",
           variant: "danger",
           solid: true,

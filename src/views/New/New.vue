@@ -90,11 +90,12 @@ export default {
     async search(query) {
       if (query.length > 3) {
         try {
-          const response = this.$axios.get(
+          const response = await this.$axios.get(
             `http://localhost:80/species?query=${query}`
           );
           this.results = response.data.data;
         } catch (err) {
+          console.log(err);
           this.$bvToast.toast(`Trefle doesn't work`, {
             title: "Error",
             variant: "danger",
