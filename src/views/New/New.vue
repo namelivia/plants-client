@@ -72,7 +72,10 @@ export default {
     async onSubmit(evt) {
       try {
         evt.preventDefault();
-        await this.$axios.post("http://localhost/plants", this.form);
+        await this.$axios.post(
+          `${process.env.VUE_APP_API_ENDPOINT}/plants`,
+          this.form
+        );
         this.$bvToast.toast(`Plant ${this.form.name} created`, {
           title: "Success",
           variant: "success",
@@ -91,7 +94,7 @@ export default {
       if (query.length > 3) {
         try {
           const response = await this.$axios.get(
-            `http://localhost:80/species?query=${query}`
+            `${process.env.API_ENDPOINT}/species?query=${query}`
           );
           this.results = response.data.data;
         } catch (err) {

@@ -31,7 +31,9 @@ export default {
   methods: {
     async loadList() {
       try {
-        const response = await this.$axios.get(`http://localhost:80/plants`);
+        const response = await this.$axios.get(
+          `${process.env.VUE_APP_API_ENDPOINT}/plants`
+        );
         this.plants = response.data;
       } catch (err) {
         this.$bvToast.toast(`Plants can't be retrieved`, {

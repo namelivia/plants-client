@@ -42,7 +42,9 @@ export default {
     async onDelete(evt) {
       evt.preventDefault();
       try {
-        await this.$axios.delete(`http://localhost/plants/${this.id}`);
+        await this.$axios.delete(
+          `${process.env.VUE_APP_API_ENDPOINT}/plants/${this.id}`
+        );
         this.$emit("plant-removed", this.id);
       } catch (err) {
         console.log(err);
