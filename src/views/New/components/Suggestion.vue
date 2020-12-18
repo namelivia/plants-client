@@ -20,8 +20,7 @@ export default {
     },
     imageUrl: {
       type: String,
-      default:
-        "https://e-fisiomedic.com/wp-content/uploads/2013/11/default-placeholder.png",
+      default: "@/assets/images/image-placehoder.png",
     },
   },
 };
