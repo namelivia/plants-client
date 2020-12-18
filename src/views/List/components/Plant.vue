@@ -34,7 +34,7 @@ export default {
     },
     imageUrl: {
       type: String,
-      default: "@/assets/images/image-placehoder.png",
+      default: "@/assets/images/image-placeholder.png",
     },
   },
   methods: {
