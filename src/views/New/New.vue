@@ -28,6 +28,19 @@ section
                 placeholder="Enter description of the plant"
             )
         b-form-group(
+            id="image-input-group"
+            label="Image:"
+            label-for="image"
+        )
+            b-form-file(
+                id="image"
+                name="image"
+                v-model="form.image"
+                accept="image/*"
+                placeholder="Image for the plant"
+                drop-placeholder="Image for the plant"
+            )
+        b-form-group(
             id="species-input-group"
             label="Species:"
             label-for="species"
@@ -63,6 +76,7 @@ export default {
       form: {
         name: "",
         description: null,
+        image: null,
       },
       show: true,
       results: null,
@@ -76,6 +90,20 @@ export default {
           `${process.env.VUE_APP_API_ENDPOINT}/plants`,
           this.form
         );
+        //After creating if the plant upload image if has it
+        if (this.form.image) {
+          let formData = new FormData();
+          formData.append("file", this.form.image);
+          await this.$axios.post(
+            `${process.env.VUE_APP_API_ENDPOINT}/images`,
+            formData,
+            {
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            }
+          );
+        }
         this.$bvToast.toast(`Plant ${this.form.name} created`, {
           title: "Success",
           variant: "success",
