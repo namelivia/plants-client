@@ -86,15 +86,11 @@ export default {
     async onSubmit(evt) {
       try {
         evt.preventDefault();
-        await this.$axios.post(
-          `${process.env.VUE_APP_API_ENDPOINT}/plants`,
-          this.form
-        );
         //After creating if the plant upload image if has it
         if (this.form.image) {
           let formData = new FormData();
-          formData.append("file", this.form.image);
-          await this.$axios.post(
+          formData.append("media", this.form.image);
+          let image = await this.$axios.post(
             `${process.env.VUE_APP_API_ENDPOINT}/images`,
             formData,
             {
@@ -103,7 +99,12 @@ export default {
               },
             }
           );
+          this.form.image = image.data.location;
         }
+        await this.$axios.post(
+          `${process.env.VUE_APP_API_ENDPOINT}/plants`,
+          this.form
+        );
         this.$bvToast.toast(`Plant ${this.form.name} created`, {
           title: "Success",
           variant: "success",
