@@ -6,7 +6,7 @@ section
             v-for='plant in plants' :key='plant.id'
             :id="plant.id"
             :name="plant.name"
-            :image-url="plant.image_url"
+            :image-path="plant.image"
             :species="plant.species"
             :days-until-watering="plant.days_until_watering"
             @plant-removed="onPlantRemoved"

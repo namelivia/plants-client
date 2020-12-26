@@ -32,9 +32,14 @@ export default {
       type: Number,
       default: 0,
     },
-    imageUrl: {
+    imagePath: {
       type: String,
       default: "@/assets/images/image-placeholder.png",
+    },
+  },
+  computed: {
+    imageUrl: function () {
+      return process.env.VUE_APP_API_ENDPOINT + this.imagePath;
     },
   },
   methods: {

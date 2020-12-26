@@ -91,7 +91,7 @@ export default {
           let formData = new FormData();
           formData.append("media", this.form.image);
           let image = await this.$axios.post(
-            `${process.env.VUE_APP_API_ENDPOINT}/images`,
+            `${process.env.VUE_APP_API_ENDPOINT}/image`,
             formData,
             {
               headers: {
