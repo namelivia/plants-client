@@ -2,3 +2,9 @@
 Webclient of a plant webapp.
 
 Also an experiment for a decent Vuejs stack.
+
+To start the application locally:
+
+```
+docker-compose up
+```

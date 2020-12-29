@@ -23,4 +23,4 @@ CMD ["nginx", "-g", "daemon off;"]
 # development stage
 FROM development-builder as development
 EXPOSE 8080
-RUN npm run serve
+CMD ["npm", "run", "serve"]
