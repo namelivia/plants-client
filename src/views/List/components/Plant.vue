@@ -10,7 +10,7 @@
             p.mb-0 Id: {{id}}
             p.mb-0 Species: {{species}}
             p Days until watering: {{daysUntilWatering}}
-        b-button(variant="primary") Water it
+        b-button(variant="primary" v-on:click="onWater") Water it
         b-button.ml-2(variant="danger" v-on:click="onDelete") Delete it
 </template>
 <script>
@@ -53,6 +53,22 @@ export default {
       } catch (err) {
         console.log(err);
         this.$bvToast.toast(`Plant could not be removed`, {
+          title: "Error",
+          variant: "danger",
+          solid: true,
+        });
+      }
+    },
+    async onWater(evt) {
+      evt.preventDefault();
+      try {
+        const response = await this.$axios.post(
+          `${process.env.VUE_APP_API_ENDPOINT}/plants/${this.id}/water`
+        );
+        this.$emit("plant-watered", this.id, response);
+      } catch (err) {
+        console.log(err);
+        this.$bvToast.toast(`Plant could not be watered`, {
           title: "Error",
           variant: "danger",
           solid: true,
