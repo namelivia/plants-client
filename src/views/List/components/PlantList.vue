@@ -7,7 +7,6 @@ section
             :id="plant.id"
             :name="plant.name"
             :image-path="plant.image"
-            :species="plant.species"
             :days-until-watering="plant.days_until_watering"
             @plant-removed="onPlantRemoved"
             @plant-watered="onPlantWatered"

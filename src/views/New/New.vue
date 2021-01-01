@@ -40,19 +40,6 @@ section
                 placeholder="Image for the plant"
                 drop-placeholder="Image for the plant"
             )
-        b-form-group(
-            id="species-input-group"
-            label="Species:"
-            label-for="species"
-        )
-            b-form-input(
-                id="species"
-                name="species"
-                v-model="form.species"
-                type="text"
-                placeholder="Enter species of the plant"
-                v-on:input="search"
-            )
         b-card-group(columns)
             suggestion(
                 v-for='result in results' :key='result.id'
@@ -119,30 +106,12 @@ export default {
         });
       }
     },
-    async search(query) {
-      if (query.length > 3) {
-        try {
-          const response = await this.$axios.get(
-            `${process.env.VUE_APP_API_ENDPOINT}/plants/species?query=${query}`
-          );
-          this.results = response.data.data;
-        } catch (err) {
-          console.log(err);
-          this.$bvToast.toast(`Trefle doesn't work`, {
-            title: "Error",
-            variant: "danger",
-            solid: true,
-          });
-        }
-      }
-    },
     onReset(evt) {
       if (evt) {
         evt.preventDefault();
       }
       this.form.name = "";
       this.form.description = null;
-      this.form.species = null;
       this.results = null;
       this.show = false;
       this.$nextTick(() => {

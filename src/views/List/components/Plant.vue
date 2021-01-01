@@ -8,7 +8,6 @@
     )
         b-card-text
             p.mb-0 Id: {{id}}
-            p.mb-0 Species: {{species}}
             p Days until watering: {{daysUntilWatering}}
         b-button(variant="primary" v-on:click="onWater") Water it
         b-button.ml-2(variant="danger" v-on:click="onDelete") Delete it
@@ -23,10 +22,6 @@ export default {
     id: {
       type: Number,
       default: 0,
-    },
-    species: {
-      type: String,
-      default: "",
     },
     daysUntilWatering: {
       type: Number,
