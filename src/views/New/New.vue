@@ -123,7 +123,7 @@ export default {
       if (query.length > 3) {
         try {
           const response = await this.$axios.get(
-            `${process.env.API_ENDPOINT}/species?query=${query}`
+            `${process.env.VUE_APP_API_ENDPOINT}/plants/species?query=${query}`
           );
           this.results = response.data.data;
         } catch (err) {

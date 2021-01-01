@@ -6,6 +6,8 @@
         img-top
         style="max-width: 20rem;"
     )
+        b-card-text
+            p.mb-0 {{commonName}}
 </template>
 <script>
 export default {
