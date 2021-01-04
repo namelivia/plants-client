@@ -1,12 +1,20 @@
 <template lang="pug">
 section
     h3(v-if='loading' ) Loading...
-    .content(v-else)
-        h1 Loaded
+    b-card-group(v-else rows)
+        journal-entry(
+            v-for='entry in journal' :key='entry.id'
+            :message="entry.message"
+            :timestamp="entry.timestamp"
+        )
 </template>
 
 <script>
+import JournalEntry from "./components/JournalEntry";
 export default {
+  components: {
+    JournalEntry: JournalEntry,
+  },
   props: {
     plantId: {
       type: Number,
@@ -29,7 +37,6 @@ export default {
           `${process.env.VUE_APP_API_ENDPOINT}/plants/${this.plantId}/journal`
         );
         this.journal = response.data;
-        console.log(this.journal);
       } catch (err) {
         this.$bvToast.toast(`Journal can't be retrieved`, {
           title: "Error",
