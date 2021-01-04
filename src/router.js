@@ -22,6 +22,12 @@ const router = new Router({
       name: "new",
       component: () => import("./views/New/New.vue"),
     },
+    {
+      path: "/plant/:plantId",
+      name: "plant",
+      component: () => import("./views/PlantDetail/PlantDetail.vue"),
+      props: true,
+    },
   ],
 });
 

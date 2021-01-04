@@ -22,13 +22,11 @@ export default {
   data: function () {
     return {
       plants: [],
-      journal: null,
       loading: true,
     };
   },
   mounted: function () {
     this.loadList();
-    this.loadJournal();
   },
   methods: {
     async loadList() {
@@ -39,23 +37,6 @@ export default {
         this.plants = response.data;
       } catch (err) {
         this.$bvToast.toast(`Plants can't be retrieved`, {
-          title: "Error",
-          variant: "danger",
-          solid: true,
-        });
-      } finally {
-        this.loading = false;
-      }
-    },
-    async loadJournal() {
-      try {
-        const response = await this.$axios.get(
-          `${process.env.VUE_APP_API_ENDPOINT}/plants/99/journal`
-        );
-        this.journal = response.data;
-        console.log(this.journal);
-      } catch (err) {
-        this.$bvToast.toast(`Journal can't be retrieved`, {
           title: "Error",
           variant: "danger",
           solid: true,

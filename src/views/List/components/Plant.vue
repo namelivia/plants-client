@@ -11,6 +11,7 @@
             p Days until watering: {{daysUntilWatering}}
         b-button(variant="primary" v-on:click="onWater") Water it
         b-button.ml-2(variant="danger" v-on:click="onDelete") Delete it
+        router-link(:to="{ name: 'plant', params: { plantId: id}}") Details
 </template>
 <script>
 export default {
