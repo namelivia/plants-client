@@ -7,13 +7,16 @@ section
             :message="entry.message"
             :timestamp="entry.timestamp"
         )
+    add-journal-entry(:plant-id="this.plantId")
 </template>
 
 <script>
 import JournalEntry from "./components/JournalEntry";
+import AddJournalEntry from "./components/AddJournalEntry";
 export default {
   components: {
     JournalEntry: JournalEntry,
+    AddJournalEntry: AddJournalEntry,
   },
   props: {
     plantId: {
