@@ -1,13 +1,13 @@
 <template lang="pug">
 section
     h3(v-if='loading' ) Loading...
-    b-card-group(v-else rows)
+    div(v-else)
         journal-entry(
             v-for='entry in journal' :key='entry.id'
             :message="entry.message"
             :timestamp="entry.timestamp"
         )
-    add-journal-entry(:plant-id="this.plantId")
+    add-journal-entry.mt-4(:plant-id="this.plantId")
 </template>
 
 <script>
