@@ -54,7 +54,7 @@ section
 
 <script>
 import Suggestion from "./components/Suggestion";
-import router from "../../router";
+import router from "@/router";
 export default {
   components: {
     suggestion: Suggestion,

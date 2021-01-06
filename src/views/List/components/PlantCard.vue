@@ -7,10 +7,10 @@
         style="max-width: 20rem;"
     )
         b-card-text
-            p Next watering in {{untilNextWatering}} days
-        b-button(variant="primary" size="lg" v-on:click="onWater") Water it
+            p {{ $t("plantCard.nextWatering", { days: daysUntilWatering}) }}
+        b-button(variant="primary" size="lg" v-on:click="onWater" v-t="'plantCard.waterIt'")
         router-link(:to="{ name: 'plant', params: { plantId: id}}")
-            b-button.ml-2 Details
+            b-button.ml-2(v-t="'plantCard.details'")
 </template>
 <script>
 export default {

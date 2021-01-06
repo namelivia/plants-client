@@ -1,6 +1,6 @@
 <template lang="pug">
 section
-    h1 Plant list
+    h1(v-t="'list.title'")
     plant-list
 </template>
 

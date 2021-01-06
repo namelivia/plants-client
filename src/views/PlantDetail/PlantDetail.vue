@@ -21,7 +21,7 @@ section
 <script>
 import JournalEntry from "./components/JournalEntry";
 import AddJournalEntry from "./components/AddJournalEntry";
-import router from "../../router";
+import router from "@/router";
 export default {
   components: {
     JournalEntry: JournalEntry,

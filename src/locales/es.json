@@ -1,0 +1,18 @@
+{
+  "navigation": {
+    "title": "App Plantas",
+    "list": "Lista",
+    "new": "Nueva"
+  },
+  "welcome": {
+    "welcome": "Bienvenido a la app de plantas"
+  },
+  "list": {
+    "title": "Lista de plantas"
+  },
+  "plantCard": {
+    "waterIt": "Regarla",
+    "details": "Detalles",
+    "nextWatering": "Próximo riego en {days} días"
+  }
+}
