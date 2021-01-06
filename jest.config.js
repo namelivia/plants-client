@@ -6,4 +6,5 @@ module.exports = {
   },
   collectCoverage: true,
   collectCoverageFrom: ["src/**/*.{js,vue}"],
+  setupFiles: ["./test-setup.js"],
 };
