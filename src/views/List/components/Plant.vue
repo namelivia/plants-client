@@ -8,7 +8,9 @@
     )
         b-card-text
             p.mb-0 Id: {{id}}
-            p Days until watering: {{daysUntilWatering}}
+            p.mb-0 Water every: {{daysUntilWatering}} days
+            p.mb-0 Last watering: {{formattedLastWatering}}
+            p Next watering in {{untilNextWatering}} days ({{formattedNextWatering}})
         b-button(variant="primary" v-on:click="onWater") Water it
         b-button.ml-2(variant="danger" v-on:click="onDelete") Delete it
         router-link(:to="{ name: 'plant', params: { plantId: id}}") Details
@@ -32,10 +34,35 @@ export default {
       type: String,
       default: "@/assets/images/image-placeholder.png",
     },
+    lastWatering: {
+      type: String,
+      default: "",
+    },
   },
   computed: {
     imageUrl: function () {
-      return process.env.VUE_APP_API_ENDPOINT + this.imagePath;
+      if (this.imagePath) {
+        return process.env.VUE_APP_API_ENDPOINT + this.imagePath;
+      }
+      return null;
+    },
+    formattedLastWatering: function () {
+      return new Date(this.lastWatering).toLocaleString();
+    },
+    formattedNextWatering: function () {
+      let copy = new Date(this.lastWatering);
+      let date = new Date(this.lastWatering);
+      copy.setDate(date.getDate() + this.daysUntilWatering);
+      return copy.toLocaleString();
+    },
+    untilNextWatering: function () {
+      let nextWatering = new Date(this.lastWatering);
+      let date = new Date(this.lastWatering);
+      nextWatering.setDate(date.getDate() + this.daysUntilWatering);
+      const now = new Date();
+      let diff = (nextWatering.getTime() - now.getTime()) / 1000;
+      diff /= 86400;
+      return Math.round(diff);
     },
   },
   methods: {

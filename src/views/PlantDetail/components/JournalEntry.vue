@@ -18,7 +18,7 @@ export default {
   },
   computed: {
     formattedDate: function () {
-      return Date(this.timestamp).toLocaleString("en-US");
+      return new Date(this.timestamp).toLocaleString();
     },
   },
 };

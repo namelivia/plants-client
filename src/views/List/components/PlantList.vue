@@ -8,6 +8,7 @@ section
             :name="plant.name"
             :image-path="plant.image"
             :days-until-watering="plant.days_until_watering"
+            :last-watering="plant.last_watering"
             @plant-removed="onPlantRemoved"
             @plant-watered="onPlantWatered"
         )
