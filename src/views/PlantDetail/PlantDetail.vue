@@ -2,6 +2,9 @@
 section
     h3(v-if='loading' ) Loading...
     div(v-else)
+        p.mb-0 Id: {{ plant.id}}
+        p.mb-0 Name: {{ plant.name }}
+        p.mb-0 Description: {{ plant.description }}
         journal-entry(
             v-for='entry in journal' :key='entry.id'
             :message="entry.message"
@@ -27,11 +30,13 @@ export default {
   data: function () {
     return {
       journal: null,
+      plant: null,
       loading: true,
     };
   },
   mounted: function () {
     this.loadJournal();
+    this.loadPlant();
   },
   methods: {
     async loadJournal() {
@@ -42,6 +47,22 @@ export default {
         this.journal = response.data;
       } catch (err) {
         this.$bvToast.toast(`Journal can't be retrieved`, {
+          title: "Error",
+          variant: "danger",
+          solid: true,
+        });
+      } finally {
+        this.loading = false;
+      }
+    },
+    async loadPlant() {
+      try {
+        const response = await this.$axios.get(
+          `${process.env.VUE_APP_API_ENDPOINT}/plants/${this.plantId}`
+        );
+        this.plant = response.data;
+      } catch (err) {
+        this.$bvToast.toast(`Plant can't be retrieved`, {
           title: "Error",
           variant: "danger",
           solid: true,

@@ -2,7 +2,7 @@
 section
     h3(v-if='loading' ) Loading...
     b-card-group(v-else columns)
-        plant(
+        plant-card(
             v-for='plant in plants' :key='plant.id'
             :id="plant.id"
             :name="plant.name"
@@ -15,10 +15,10 @@ section
 </template>
 
 <script>
-import Plant from "./Plant";
+import PlantCard from "./PlantCard";
 export default {
   components: {
-    plant: Plant,
+    plantCard: PlantCard,
   },
   data: function () {
     return {
