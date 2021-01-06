@@ -5,8 +5,8 @@
         b-navbar-toggle(target="nav-collapse")
         b-collapse(id="nav-collapse" is-nav)
             b-navbar-nav
-                b-nav-item(to="list") List
-                b-nav-item(to="new") New
+                b-nav-item(to="/list") List
+                b-nav-item(to="/new") New
             b-navbar-nav.ml-auto
                 b-nav-item {{ currentUserEmail }}
     b-container.bg-light.text-dark.pb-4.pt-4

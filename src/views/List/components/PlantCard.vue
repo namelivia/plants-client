@@ -7,13 +7,10 @@
         style="max-width: 20rem;"
     )
         b-card-text
-            p.mb-0 Id: {{id}}
-            p.mb-0 Water every: {{daysUntilWatering}} days
-            p.mb-0 Last watering: {{formattedLastWatering}}
-            p Next watering in {{untilNextWatering}} days ({{formattedNextWatering}})
-        b-button(variant="primary" v-on:click="onWater") Water it
-        b-button.ml-2(variant="danger" v-on:click="onDelete") Delete it
-        router-link(:to="{ name: 'plant', params: { plantId: id}}") Details
+            p Next watering in {{untilNextWatering}} days
+        b-button(variant="primary" size="lg" v-on:click="onWater") Water it
+        router-link(:to="{ name: 'plant', params: { plantId: id}}")
+            b-button.ml-2 Details
 </template>
 <script>
 export default {
@@ -46,15 +43,6 @@ export default {
       }
       return null;
     },
-    formattedLastWatering: function () {
-      return new Date(this.lastWatering).toLocaleString();
-    },
-    formattedNextWatering: function () {
-      let copy = new Date(this.lastWatering);
-      let date = new Date(this.lastWatering);
-      copy.setDate(date.getDate() + this.daysUntilWatering);
-      return copy.toLocaleString();
-    },
     untilNextWatering: function () {
       let nextWatering = new Date(this.lastWatering);
       let date = new Date(this.lastWatering);
@@ -66,22 +54,6 @@ export default {
     },
   },
   methods: {
-    async onDelete(evt) {
-      evt.preventDefault();
-      try {
-        await this.$axios.delete(
-          `${process.env.VUE_APP_API_ENDPOINT}/plants/${this.id}`
-        );
-        this.$emit("plant-removed", this.id);
-      } catch (err) {
-        console.log(err);
-        this.$bvToast.toast(`Plant could not be removed`, {
-          title: "Error",
-          variant: "danger",
-          solid: true,
-        });
-      }
-    },
     async onWater(evt) {
       evt.preventDefault();
       try {

@@ -54,6 +54,7 @@ section
 
 <script>
 import Suggestion from "./components/Suggestion";
+import router from "../../router";
 export default {
   components: {
     suggestion: Suggestion,
@@ -92,12 +93,13 @@ export default {
           `${process.env.VUE_APP_API_ENDPOINT}/plants`,
           this.form
         );
-        this.$bvToast.toast(`Plant ${this.form.name} created`, {
-          title: "Success",
-          variant: "success",
-          solid: true,
+        router.replace("/list", () => {
+          this.$root.$bvToast.toast(`Plant ${this.form.name} created`, {
+            title: "Success",
+            variant: "success",
+            solid: true,
+          });
         });
-        this.onReset();
       } catch (err) {
         this.$bvToast.toast(`Plant could not be created`, {
           title: "Error",

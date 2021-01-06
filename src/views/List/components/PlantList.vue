@@ -9,7 +9,6 @@ section
             :image-path="plant.image"
             :days-until-watering="plant.days_until_watering"
             :last-watering="plant.last_watering"
-            @plant-removed="onPlantRemoved"
             @plant-watered="onPlantWatered"
         )
 </template>
@@ -46,21 +45,10 @@ export default {
         this.loading = false;
       }
     },
-    onPlantRemoved(plantId) {
-      const index = this.plants.findIndex((plant) => plant.id === plantId);
-      if (index > -1) {
-        this.plants.splice(index, 1);
-        this.$bvToast.toast(`Plant removed`, {
-          title: "Success",
-          variant: "success",
-          solid: true,
-        });
-      }
-    },
     onPlantWatered(plantId, response) {
       const index = this.plants.findIndex((plant) => plant.id === plantId);
       if (index > -1) {
-        this.plants[index].days_until_watering = response.days_until_watering;
+        this.plants[index].last_watering = response.data.last_watering;
         this.$bvToast.toast(`Plant watered`, {
           title: "Success",
           variant: "success",
