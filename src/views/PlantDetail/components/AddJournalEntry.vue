@@ -3,7 +3,7 @@ section
     b-form(@submit="onSubmit" @reset="onReset"  v-if="show")
         b-form-group(
             id="message-input-group"
-            label="Insert entry manually:"
+            :label="$t('addJournalEntry.insertEntryManually')"
             label-for="message"
         )
             b-input-group
@@ -12,10 +12,10 @@ section
                     name="messae"
                     v-model="form.message"
                     type="text"
-                    placeholder="Enter the message text"
+                    :placeholder="$t('addJournalEntry.messageContent')"
                 )
                 b-input-group-append
-                    b-button(type="submit" variant="primary") Add
+                    b-button(type="submit" variant="primary" v-t="'addJournalEntry.add'")
 </template>
 <script>
 export default {

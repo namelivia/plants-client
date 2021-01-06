@@ -4,7 +4,7 @@ section
     b-form(@submit="onSubmit" @reset="onReset"  v-if="show")
         b-form-group(
             id="name-input-group"
-            label="Name:"
+            :label="$t('newPlant.name')"
             label-for="name"
         )
             b-form-input(
@@ -13,11 +13,11 @@ section
                 v-model="form.name"
                 type="text"
                 required
-                placeholder="Enter plant name"
+                :placeholder="$t('newPlant.enterPlantName')"
             )
         b-form-group(
             id="description-input-group"
-            label="Description:"
+            :label="$t('newPlant.description')"
             label-for="description"
         )
             b-form-input(
@@ -25,11 +25,11 @@ section
                 name="description"
                 v-model="form.description"
                 type="text"
-                placeholder="Enter description of the plant"
+                :placeholder="$t('newPlant.enterPlantDescription')"
             )
         b-form-group(
             id="image-input-group"
-            label="Image:"
+            :label="$t('newPlant.image')"
             label-for="image"
         )
             b-form-file(
@@ -37,8 +37,8 @@ section
                 name="image"
                 v-model="form.image"
                 accept="image/*"
-                placeholder="Image for the plant"
-                drop-placeholder="Image for the plant"
+                :placeholder="$t('newPlant.imageForThePlant')"
+                :drop-placeholder="$t('newPlant.imageForThePlant')"
             )
         b-card-group(columns)
             suggestion(
@@ -48,8 +48,8 @@ section
                 :image-url="result.image_url || undefined"
             )
         .mt-4
-        b-button.mr-2(type="submit" variant="primary") Submit
-        b-button(type="reset" variant="danger") Reset
+        b-button.mr-2(type="submit" variant="primary") {{$t('newPlant.submit')}}
+        b-button(type="reset" variant="danger") {{$t('newPlant.reset')}}
 </template>
 
 <script>

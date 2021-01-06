@@ -4,12 +4,12 @@ section
     div(v-else)
         img.mb-4(:src="imageUrl")
         p.mb-0 Id: {{ plant.id}}
-        p.mb-0 Name: {{ plant.name }}
-        p.mb-0 Description: {{ plant.description }}
-        p.mb-0 Water every: {{ plant.days_until_watering }} days
-        p.mb-0 Last watering: {{formattedLastWatering}}
-        p Next watering: {{formattedNextWatering}}
-        b-button(variant="danger" v-on:click="onDelete") Delete it
+        p.mb-0 {{$t("plantDetails.name")}}: {{ plant.name }}
+        p.mb-0 {{$t("plantDetails.description")}}: {{ plant.description }}
+        p.mb-0 {{$t("plantDetails.waterEvery")}}: {{ plant.days_until_watering }} {{$t("plantDetails.days")}}
+        p.mb-0 {{$t("plantDetails.lastWatering")}}: {{formattedLastWatering}}
+        p {{$t("plantDetails.nextWatering")}}: {{formattedNextWatering}}
+        b-button(variant="danger" v-on:click="onDelete" v-t="'plantDetails.deleteIt'")
         journal-entry(
             v-for='entry in journal' :key='entry.id'
             :message="entry.message"
