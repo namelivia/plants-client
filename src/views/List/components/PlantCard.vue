@@ -7,7 +7,7 @@
         style="max-width: 20rem;"
     )
         b-card-text
-            p {{ $t("plantCard.nextWatering", { days: daysUntilWatering}) }}
+            p {{ $t("plantCard.nextWatering", { days: untilNextWatering}) }}
         b-button(variant="primary" size="lg" v-on:click="onWater" v-t="'plantCard.waterIt'")
         router-link(:to="{ name: 'plant', params: { plantId: id}}")
             b-button.ml-2(v-t="'plantCard.details'")
@@ -48,6 +48,7 @@ export default {
       let date = new Date(this.lastWatering);
       nextWatering.setDate(date.getDate() + this.daysUntilWatering);
       const now = new Date();
+      console.log(now);
       let diff = (nextWatering.getTime() - now.getTime()) / 1000;
       diff /= 86400;
       return Math.round(diff);
