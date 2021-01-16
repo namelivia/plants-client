@@ -48,7 +48,6 @@ export default {
       let date = new Date(this.lastWatering);
       nextWatering.setDate(date.getDate() + this.daysUntilWatering);
       const now = new Date();
-      console.log(now);
       let diff = (nextWatering.getTime() - now.getTime()) / 1000;
       diff /= 86400;
       return Math.round(diff);
