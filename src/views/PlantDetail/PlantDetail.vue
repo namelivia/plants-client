@@ -2,7 +2,7 @@
 section
     h3(v-if='loading' ) Loading...
     div(v-else)
-        img.mb-4(:src="imageUrl")
+        img.mb-4.img-fluid(:src="imageUrl")
         p.mb-0 Id: {{ plant.id}}
         p.mb-0 {{$t("plantDetails.name")}}: {{ plant.name }}
         p.mb-0 {{$t("plantDetails.description")}}: {{ plant.description }}
