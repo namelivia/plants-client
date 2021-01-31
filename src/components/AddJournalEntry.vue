@@ -18,6 +18,8 @@ section
                     b-button(type="submit" variant="primary" v-t="'addJournalEntry.add'")
 </template>
 <script>
+import { postJournalEntry } from "@/apis/apis";
+import { errorToast, okToast } from "@/helpers/ui";
 export default {
   props: {
     plantId: {
@@ -37,22 +39,11 @@ export default {
     async onSubmit(evt) {
       try {
         evt.preventDefault();
-        await this.$axios.post(
-          `${process.env.VUE_APP_API_ENDPOINT}/plants/${this.plantId}/journal`,
-          this.form
-        );
-        this.$bvToast.toast(`Journal entry added`, {
-          title: "Success",
-          variant: "success",
-          solid: true,
-        });
+        postJournalEntry(this.plantId, this.form);
+        this.$bvToast.toast(`Journal entry added`, okToast);
         this.onReset();
       } catch (err) {
-        this.$bvToast.toast(`Journal entry could not be added`, {
-          title: "Error",
-          variant: "danger",
-          solid: true,
-        });
+        this.$bvToast.toast(`Journal entry could not be added`, errorToast);
       }
     },
     onReset(evt) {

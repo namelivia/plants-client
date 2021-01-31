@@ -15,6 +15,8 @@ section
 
 <script>
 import PlantCard from "./PlantCard";
+import { getPlants } from "@/apis/apis";
+import { errorToast, okToast } from "@/helpers/ui";
 export default {
   components: {
     plantCard: PlantCard,
@@ -31,16 +33,9 @@ export default {
   methods: {
     async loadList() {
       try {
-        const response = await this.$axios.get(
-          `${process.env.VUE_APP_API_ENDPOINT}/plants`
-        );
-        this.plants = response.data;
+        this.plants = await getPlants();
       } catch (err) {
-        this.$bvToast.toast(`Plants can't be retrieved`, {
-          title: "Error",
-          variant: "danger",
-          solid: true,
-        });
+        this.$bvToast.toast(`Plants can't be retrieved`, errorToast);
       } finally {
         this.loading = false;
       }
@@ -49,11 +44,7 @@ export default {
       const index = this.plants.findIndex((plant) => plant.id === plantId);
       if (index > -1) {
         this.plants[index].last_watering = response.data.last_watering;
-        this.$bvToast.toast(`Plant watered`, {
-          title: "Success",
-          variant: "success",
-          solid: true,
-        });
+        this.$bvToast.toast(`Plant watered`, okToast);
       }
     },
   },

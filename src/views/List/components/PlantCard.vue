@@ -13,6 +13,9 @@
             b-button.ml-2(v-t="'plantCard.details'")
 </template>
 <script>
+import { getImageUrl } from "@/apis/helpers";
+import { waterPlant } from "@/apis/apis";
+import { errorToast } from "@/helpers/ui";
 export default {
   props: {
     name: {
@@ -39,7 +42,7 @@ export default {
   computed: {
     imageUrl: function () {
       if (this.imagePath) {
-        return process.env.VUE_APP_API_ENDPOINT + this.imagePath;
+        return getImageUrl(this.imagePath);
       }
       return null;
     },
@@ -57,17 +60,11 @@ export default {
     async onWater(evt) {
       evt.preventDefault();
       try {
-        const response = await this.$axios.post(
-          `${process.env.VUE_APP_API_ENDPOINT}/plants/${this.id}/water`
-        );
+        const response = await waterPlant(this.id);
         this.$emit("plant-watered", this.id, response);
       } catch (err) {
         console.log(err);
-        this.$bvToast.toast(`Plant could not be watered`, {
-          title: "Error",
-          variant: "danger",
-          solid: true,
-        });
+        this.$bvToast.toast(`Plants could not be watered`, errorToast);
       }
     },
   },
