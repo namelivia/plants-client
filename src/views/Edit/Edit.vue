@@ -48,7 +48,7 @@ export default {
     },
     async onSubmit(data) {
       try {
-        putPlant(this.plantId, data);
+        await putPlant(this.plantId, data);
         router.replace("/list", () => {
           this.$root.$bvToast.toast(`Plant ${data.name} created`, okToast);
         });

@@ -39,7 +39,7 @@ export default {
     async onSubmit(evt) {
       try {
         evt.preventDefault();
-        postJournalEntry(this.plantId, this.form);
+        await postJournalEntry(this.plantId, this.form);
         this.$bvToast.toast(`Journal entry added`, okToast);
         this.onReset();
       } catch (err) {

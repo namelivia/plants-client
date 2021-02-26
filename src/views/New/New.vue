@@ -16,7 +16,7 @@ export default {
   methods: {
     async onSubmit(data) {
       try {
-        postPlant(data);
+        await postPlant(data);
         router.replace("/list", () => {
           this.$root.$bvToast.toast(`Plant ${data.name} created`, okToast);
         });
