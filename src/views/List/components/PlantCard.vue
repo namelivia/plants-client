@@ -1,16 +1,14 @@
 <template lang="pug">
-    b-card.mb-2(
-        :title="name"
-        :img-src="imageUrl"
-        :img-alt="name"
-        img-top
+    b-card.mb-2.no-body(
         style="max-width: 20rem;"
     )
-        b-card-text
-            p {{ $t("plantCard.nextWatering", { days: untilNextWatering}) }}
-        b-button(variant="primary" size="lg" v-on:click="onWater" v-t="'plantCard.waterIt'")
-        router-link(:to="{ name: 'plant', params: { plantId: id}}")
-            b-button.ml-2(v-t="'plantCard.details'")
+        b-card-img-lazy(:src="imageUrl" :alt="name" top)
+        b-card-body(:title="name")
+            b-card-text
+                p {{ $t("plantCard.nextWatering", { days: untilNextWatering}) }}
+            b-button(variant="primary" size="lg" v-on:click="onWater" v-t="'plantCard.waterIt'")
+            router-link(:to="{ name: 'plant', params: { plantId: id}}")
+                b-button.ml-2(v-t="'plantCard.details'")
 </template>
 <script>
 import { getImageUrl } from "@/apis/helpers";
