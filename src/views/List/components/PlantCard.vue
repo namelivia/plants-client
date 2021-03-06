@@ -2,7 +2,7 @@
     b-card.mb-2.no-body(
         style="max-width: 20rem;"
     )
-        b-card-img-lazy(:src="imageUrl" :alt="name" top)
+        b-card-img-lazy(:src="imageUrl" :alt="name" top ref="image")
         b-card-body(:title="name")
             b-card-text
                 p {{ $t("plantCard.nextWatering", { days: untilNextWatering}) }}
@@ -37,10 +37,15 @@ export default {
       default: "",
     },
   },
+  data: function () {
+    return {
+      imageWidth: 0,
+    };
+  },
   computed: {
     imageUrl: function () {
-      if (this.imagePath) {
-        return getImageUrl(this.imagePath);
+      if (this.imagePath && this.imageWidth) {
+        return getImageUrl(this.imagePath, this.imageWidth);
       }
       return null;
     },
@@ -54,6 +59,9 @@ export default {
       return Math.round(diff);
     },
   },
+  mounted: function () {
+    this.calculateWidth();
+  },
   methods: {
     async onWater(evt) {
       evt.preventDefault();
@@ -64,6 +72,9 @@ export default {
         console.log(err);
         this.$bvToast.toast(`Plants could not be watered`, errorToast);
       }
+    },
+    calculateWidth() {
+      this.imageWidth = this.$refs.image.$el.clientWidth;
     },
   },
 };
