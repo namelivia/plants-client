@@ -32,9 +32,9 @@
         b-button(type="reset" variant="danger") {{$t('newPlant.reset')}}
 </template>
 <script>
-import ResizeImageUpload from "@/components/ResizeImageUpload";
-import { postImage } from "@/apis/apis";
-import { errorToast } from "@/helpers/ui";
+import ResizeImageUpload from '@/components/ResizeImageUpload'
+import { postImage } from '@/apis/apis'
+import { errorToast } from '@/helpers/ui'
 export default {
   components: {
     ResizeImageUpload,
@@ -44,10 +44,10 @@ export default {
       type: Object,
       default: () => {
         return {
-          name: "",
+          name: '',
           description: null,
           image: null,
-        };
+        }
       },
     },
   },
@@ -55,53 +55,53 @@ export default {
     return {
       show: true,
       plant: {
-        name: "",
+        name: '',
         description: null,
         image: null,
       },
-    };
+    }
   },
   watch: {
     initialData: {
       immediate: true,
       handler: function (newData) {
-        this.plant = newData;
+        this.plant = newData
       },
     },
   },
   methods: {
     onImageLoaded(newImage) {
-      this.plant.image = newImage;
+      this.plant.image = newImage
     },
     async uploadImage() {
       //After creating if the plant upload image if has it
       if (this.plant.image) {
         try {
-          this.plant.image = await postImage(this.plant.image);
+          this.plant.image = await postImage(this.plant.image)
         } catch (err) {
-          this.$bvToast.toast(`Image could not be loaded`, errorToast);
+          this.$bvToast.toast(`Image could not be loaded`, errorToast)
         }
       }
     },
     async onSubmit(evt) {
       if (evt) {
-        evt.preventDefault();
+        evt.preventDefault()
       }
-      await this.uploadImage();
-      this.$emit("submit", this.plant);
+      await this.uploadImage()
+      this.$emit('submit', this.plant)
     },
     onReset(evt) {
       if (evt) {
-        evt.preventDefault();
+        evt.preventDefault()
       }
-      this.plant.name = "";
-      this.plant.description = null;
-      this.plant.image = null;
-      this.show = false;
+      this.plant.name = ''
+      this.plant.description = null
+      this.plant.image = null
+      this.show = false
       this.$nextTick(() => {
-        this.show = true;
-      });
+        this.show = true
+      })
     },
   },
-};
+}
 </script>

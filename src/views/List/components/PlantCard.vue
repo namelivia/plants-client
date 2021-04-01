@@ -11,14 +11,14 @@
                 b-button.ml-2(v-t="'plantCard.details'")
 </template>
 <script>
-import { getImageUrl } from "@/apis/helpers";
-import { waterPlant } from "@/apis/apis";
-import { errorToast } from "@/helpers/ui";
+import { getImageUrl } from '@/apis/helpers'
+import { waterPlant } from '@/apis/apis'
+import { errorToast } from '@/helpers/ui'
 export default {
   props: {
     name: {
       type: String,
-      default: "",
+      default: '',
     },
     id: {
       type: Number,
@@ -30,52 +30,52 @@ export default {
     },
     imagePath: {
       type: String,
-      default: "@/assets/images/image-placeholder.png",
+      default: '@/assets/images/image-placeholder.png',
     },
     lastWatering: {
       type: String,
-      default: "",
+      default: '',
     },
   },
   data: function () {
     return {
       imageWidth: 0,
-    };
+    }
   },
   computed: {
     imageUrl: function () {
       if (this.imagePath && this.imageWidth) {
-        return getImageUrl(this.imagePath, this.imageWidth);
+        return getImageUrl(this.imagePath, this.imageWidth)
       }
-      return null;
+      return null
     },
     untilNextWatering: function () {
-      let nextWatering = new Date(this.lastWatering);
-      let date = new Date(this.lastWatering);
-      nextWatering.setDate(date.getDate() + this.daysUntilWatering);
-      const now = new Date();
-      let diff = (nextWatering.getTime() - now.getTime()) / 1000;
-      diff /= 86400;
-      return Math.round(diff);
+      let nextWatering = new Date(this.lastWatering)
+      let date = new Date(this.lastWatering)
+      nextWatering.setDate(date.getDate() + this.daysUntilWatering)
+      const now = new Date()
+      let diff = (nextWatering.getTime() - now.getTime()) / 1000
+      diff /= 86400
+      return Math.round(diff)
     },
   },
   mounted: function () {
-    this.calculateWidth();
+    this.calculateWidth()
   },
   methods: {
     async onWater(evt) {
-      evt.preventDefault();
+      evt.preventDefault()
       try {
-        const response = await waterPlant(this.id);
-        this.$emit("plant-watered", this.id, response);
+        const response = await waterPlant(this.id)
+        this.$emit('plant-watered', this.id, response)
       } catch (err) {
-        console.log(err);
-        this.$bvToast.toast(`Plants could not be watered`, errorToast);
+        console.log(err)
+        this.$bvToast.toast(`Plants could not be watered`, errorToast)
       }
     },
     calculateWidth() {
-      this.imageWidth = this.$refs.image.$el.clientWidth;
+      this.imageWidth = this.$refs.image.$el.clientWidth
     },
   },
-};
+}
 </script>

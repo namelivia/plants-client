@@ -14,10 +14,10 @@ section(v-else)
 </template>
 
 <script>
-import { getPlant, deletePlant } from "@/apis/apis";
-import { getImageUrl } from "@/apis/helpers";
-import { errorToast, okToast } from "@/helpers/ui";
-import router from "@/router";
+import { getPlant, deletePlant } from '@/apis/apis'
+import { getImageUrl } from '@/apis/helpers'
+import { errorToast, okToast } from '@/helpers/ui'
+import router from '@/router'
 export default {
   props: {
     plantId: {
@@ -29,54 +29,54 @@ export default {
     return {
       plant: null,
       loading: true,
-    };
+    }
   },
   computed: {
     formattedLastWatering: function () {
-      return new Date(this.plant.last_watering).toLocaleString();
+      return new Date(this.plant.last_watering).toLocaleString()
     },
     formattedNextWatering: function () {
-      let copy = new Date(this.plant.last_watering);
-      let date = new Date(this.plant.last_watering);
-      copy.setDate(date.getDate() + this.plant.days_until_watering);
-      return copy.toLocaleString();
+      let copy = new Date(this.plant.last_watering)
+      let date = new Date(this.plant.last_watering)
+      copy.setDate(date.getDate() + this.plant.days_until_watering)
+      return copy.toLocaleString()
     },
     imageUrl: function () {
       if (this.plant.image) {
-        return getImageUrl(this.plant.image);
+        return getImageUrl(this.plant.image)
       }
-      return null;
+      return null
     },
   },
   watch: {
     plantId: {
       immediate: true,
       handler: function (newData) {
-        this.loadPlant(newData);
+        this.loadPlant(newData)
       },
     },
   },
   methods: {
     async loadPlant(plantId) {
       try {
-        this.plant = await getPlant(plantId);
+        this.plant = await getPlant(plantId)
       } catch (err) {
-        this.$bvToast.toast(`Plant can't be retrieved`, errorToast);
+        this.$bvToast.toast(`Plant can't be retrieved`, errorToast)
       } finally {
-        this.loading = false;
+        this.loading = false
       }
     },
     async onDelete(evt) {
-      evt.preventDefault();
+      evt.preventDefault()
       try {
-        deletePlant(this.plant.id);
-        router.replace("/list", () => {
-          this.$root.$bvToast.toast(`Plant removed`, okToast);
-        });
+        deletePlant(this.plant.id)
+        router.replace('/list', () => {
+          this.$root.$bvToast.toast(`Plant removed`, okToast)
+        })
       } catch (err) {
-        this.$bvToast.toast(`Plant could not be removed`, errorToast);
+        this.$bvToast.toast(`Plant could not be removed`, errorToast)
       }
     },
   },
-};
+}
 </script>

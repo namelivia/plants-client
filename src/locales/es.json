@@ -2,7 +2,8 @@
   "navigation": {
     "title": "App Plantas",
     "list": "Lista",
-    "new": "Nueva"
+    "new": "Nueva",
+    "dead": "Muertas"
   },
   "welcome": {
     "welcome": "Bienvenido a la app de plantas"

@@ -7,8 +7,8 @@ section
 </template>
 
 <script>
-import Journal from "@/components/Journal";
-import PlantCardBig from "./components/PlantCardBig";
+import Journal from '@/components/Journal'
+import PlantCardBig from './components/PlantCardBig'
 export default {
   components: {
     Journal,
@@ -20,5 +20,5 @@ export default {
       default: 0,
     },
   },
-};
+}
 </script>
