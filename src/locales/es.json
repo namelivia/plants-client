@@ -23,7 +23,8 @@
     "days": "días",
     "lastWatering": "Último riego",
     "nextWatering": "Próximo riego",
-    "deleteIt": "Eliminarla"
+    "deleteIt": "Eliminarla",
+    "killIt": "Matarla"
   },
   "addJournalEntry": {
     "add": "Añadir",

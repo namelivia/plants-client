@@ -8,13 +8,14 @@ section(v-else)
     p.mb-0 {{$t("plantDetails.waterEvery")}}: {{ plant.days_until_watering }} {{$t("plantDetails.days")}}
     p.mb-0 {{$t("plantDetails.lastWatering")}}: {{formattedLastWatering}}
     p {{$t("plantDetails.nextWatering")}}: {{formattedNextWatering}}
-    b-button(variant="danger" v-on:click="onDelete" v-t="'plantDetails.deleteIt'")
     router-link(:to="{ name: 'edit', params: { plantId: this.plant.id}}")
-        b-button.ml-2(v-t="'plantCard.editIt'")
+        b-button(v-t="'plantCard.editIt'")
+    b-button.ml-4(variant="danger" v-on:click="onKill" v-t="'plantDetails.killIt'")
+    b-button.ml-2(variant="danger" v-on:click="onDelete" v-t="'plantDetails.deleteIt'")
 </template>
 
 <script>
-import { getPlant, deletePlant } from '@/apis/apis'
+import { getPlant, killPlant, deletePlant } from '@/apis/apis'
 import { getImageUrl } from '@/apis/helpers'
 import { errorToast, okToast } from '@/helpers/ui'
 import router from '@/router'
@@ -64,6 +65,18 @@ export default {
         this.$bvToast.toast(`Plant can't be retrieved`, errorToast)
       } finally {
         this.loading = false
+      }
+    },
+    async onKill(evt) {
+      evt.preventDefault()
+      try {
+        await killPlant(this.plant.id)
+        router.replace('/dead', () => {
+          this.$root.$bvToast.toast(`Plant killed`, okToast)
+        })
+      } catch (err) {
+        console.log(err)
+        this.$bvToast.toast(`Plant could not be killed`, errorToast)
       }
     },
     async onDelete(evt) {

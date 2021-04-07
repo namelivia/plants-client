@@ -23,7 +23,8 @@
     "days": "days",
     "lastWatering": "Last watering",
     "nextWatering": "Next watering",
-    "deleteIt": "Delete it"
+    "deleteIt": "Delete it",
+    "killIt": "Kill it"
   },
   "addJournalEntry": {
     "add": "Add",
