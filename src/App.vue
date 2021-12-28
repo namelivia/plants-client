@@ -1,22 +1,8 @@
 <template lang="pug">
-.plants-background.min-vh-100
-    b-navbar(toggleable="lg" type="dark" variant="info")
-        b-navbar-brand(to="/")
-            span(v-t="'navigation.title'")
-        b-navbar-toggle(target="nav-collapse")
-        b-collapse(id="nav-collapse" is-nav)
-            b-navbar-nav
-                b-nav-item(to="/list")
-                  span(v-t="'navigation.list'")
-                b-nav-item(to="/new")
-                  span(v-t="'navigation.new'")
-                b-nav-item(to="/dead")
-                  span(v-t="'navigation.dead'")
-            b-navbar-nav.ml-auto
-                b-nav-item {{ $i18n.locale }}
-                b-nav-item {{ currentUserEmail }}
-    b-container.bg-light.text-dark.pb-4.pt-4
-        router-view
+.h-screen
+  navbar(:links="links" :locale="$i18n.locale" :current-user-email="currentUserEmail")
+  div(class="container mx-auto")
+      router-view
 </template>
 
 <script>
@@ -25,6 +11,11 @@ export default {
   data: function () {
     return {
       currentUserEmail: undefined,
+      links: [
+        { id: 1, text: this.$i18n.t('navigation.list'), href: '/list' },
+        { id: 2, text: this.$i18n.t('navigation.new'), href: '/new' },
+        { id: 3, text: this.$i18n.t('navigation.dead'), href: '/dead' },
+      ],
     }
   },
   mounted() {
