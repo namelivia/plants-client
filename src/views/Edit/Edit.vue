@@ -1,6 +1,6 @@
 <template lang="pug">
 section
-    h1 Edit existing plant
+    section-title(text="Edit existing plant")
     plant-form(@submit="onSubmit" :initial-data="form")
 </template>
 

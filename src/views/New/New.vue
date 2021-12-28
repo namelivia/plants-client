@@ -1,6 +1,6 @@
 <template lang="pug">
 section
-    h1 Add new plant
+    section-title(text="Add new plant")
     plant-form(@submit="onSubmit")
 </template>
 

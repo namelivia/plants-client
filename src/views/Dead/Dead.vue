@@ -1,6 +1,6 @@
 <template lang="pug">
 section
-    h1(v-t="'list.title'")
+    section-title(:text="$t('list.title')")
     plant-list
 </template>
 
