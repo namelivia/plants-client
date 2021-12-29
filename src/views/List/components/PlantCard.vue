@@ -4,7 +4,7 @@ div
     card-image(:src="imageUrl" :alt="name" @width="onWidth")
     card-body(:title="name")
       p {{ $t("plantCard.nextWatering", { days: untilNextWatering}) }}
-      regular-button(v-on:click="onWater" :text="$t('plantCard.waterIt')")
+      regular-button(@click="onWater" :text="$t('plantCard.waterIt')")
       router-link(:to="{ name: 'plant', params: { plantId: id}}")
           secondary-button(:text="$t('plantCard.details')")
 </template>

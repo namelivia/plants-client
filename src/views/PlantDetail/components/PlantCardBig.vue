@@ -4,14 +4,14 @@ section(v-else)
     img.mb-4.img-fluid(:src="imageUrl")
     p.mb-0 Id: {{ plant.id}}
     p.mb-0 {{$t("plantDetails.name")}}: {{ plant.name }}
-    p.mb-h{{$t("plantDetails.description")}}: {{ plant.description }}
+    p.mb-0 {{$t("plantDetails.description")}}: {{ plant.description }}
     p.mb-0 {{$t("plantDetails.waterEvery")}}: {{ plant.days_until_watering }} {{$t("plantDetails.days")}}
     p.mb-0 {{$t("plantDetails.lastWatering")}}: {{formattedLastWatering}}
     p {{$t("plantDetails.nextWatering")}}: {{formattedNextWatering}}
     router-link(:to="{ name: 'edit', params: { plantId: this.plant.id}}")
         secondary-button(:text="$t('plantCard.editIt')")
-    danger-button.ml-4(v-on:click="onKill" :text="$t('plantDetails.killIt')")
-    danger-button.ml-2(v-on:click="onDelete" :text="'$t(plantDetails.deleteIt')")
+    danger-button.ml-4(@click="onKill" :text="$t('plantDetails.killIt')")
+    danger-button.ml-2(@click="onDelete" :text="$t('plantDetails.deleteIt')")
 </template>
 
 <script>
