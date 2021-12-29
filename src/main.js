@@ -1,4 +1,3 @@
-import BootstrapVue from 'bootstrap-vue'
 import Vue from 'vue'
 import axios from 'axios'
 import router from './router'
@@ -41,7 +40,6 @@ Vue.component('CardGrid', CardGrid)
 Vue.component('Navbar', Navbar)
 
 Vue.prototype.$axios = axios
-Vue.use(BootstrapVue)
 
 new Vue({
   router,

@@ -1,40 +1,28 @@
 <template lang="pug">
-    b-form(@submit="onSubmit" @reset="onReset"  v-if="show")
-        b-form-group(
-            id="name-input-group"
-            :label="$t('plantForm.name')"
-            label-for="name"
+    form(@submit="onSubmit" @reset="onReset"  v-if="show")
+        text-input(
+          :name="name"
+          :label="$t('plantForm.name')"
+          :placeholder="$t('plantForm.enterPlantName')"
+          @update="plant.name = $event"
+          required
         )
-            b-form-input(
-                id="name"
-                name="name"
-                v-model="plant.name"
-                type="text"
-                required
-                :placeholder="$t('plantForm.enterPlantName')"
-            )
-        b-form-group(
-            id="description-input-group"
-            :label="$t('plantForm.descriptiom')"
-            label-for="description"
+        text-input(
+          :name="description"
+          :label="$t('plantForm.description')"
+          :placeholder="$t('plantForm.enterPlantDescription')"
+          @update="plant.description = $event"
+          required
         )
-            b-form-input(
-                id="description"
-                name="description"
-                v-model="plant.description"
-                type="text"
-                required
-                :placeholder="$t('plantForm.enterPlantDescription')"
-            )
         resize-image-upload(@loaded="onImageLoaded")
         .mt-4
-        b-button.mr-2(type="submit" variant="primary") {{$t('newPlant.submit')}}
-        b-button(type="reset" variant="danger") {{$t('newPlant.reset')}}
+        submit-button.mr-2(:text="$t('newPlant.submit')")
+        reset-button(:text="$t('newPlant.reset')")
 </template>
 <script>
 import ResizeImageUpload from '@/components/ResizeImageUpload'
 import { postImage } from '@/apis/apis'
-import { errorToast } from '@/helpers/ui'
+//import { errorToast } from '@/helpers/ui'
 export default {
   components: {
     ResizeImageUpload,
@@ -79,7 +67,7 @@ export default {
         try {
           this.plant.image = await postImage(this.plant.image)
         } catch (err) {
-          this.$bvToast.toast(`Image could not be loaded`, errorToast)
+          //this.$bvToast.toast(`Image could not be loaded`, errorToast)
         }
       }
     },

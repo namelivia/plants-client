@@ -7,7 +7,7 @@ section
 <script>
 import router from '@/router'
 import { getPlant, putPlant } from '@/apis/apis'
-import { errorToast, okToast } from '@/helpers/ui'
+//import { errorToast, okToast } from '@/helpers/ui'
 import PlantForm from '@/components/PlantForm'
 export default {
   components: {
@@ -41,7 +41,7 @@ export default {
         this.form.description = plant.description
         this.form.image = plant.image
       } catch (err) {
-        this.$bvToast.toast(`Plant can't be retrieved`, errorToast)
+        //this.$bvToast.toast(`Plant can't be retrieved`, errorToast)
       } finally {
         this.loading = false
       }
@@ -50,10 +50,10 @@ export default {
       try {
         await putPlant(this.plantId, data)
         router.replace('/list', () => {
-          this.$root.$bvToast.toast(`Plant ${data.name} created`, okToast)
+          //this.$root.$bvToast.toast(`Plant ${data.name} created`, okToast)
         })
       } catch (err) {
-        this.$bvToast.toast(`Plant could not be updated`, errorToast)
+        //this.$bvToast.toast(`Plant could not be updated`, errorToast)
       }
     },
   },

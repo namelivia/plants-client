@@ -1,6 +1,6 @@
 <template lang="pug">
 section
-    h3(v-if='loading' ) Loading...
+    loading(v-if='loading')
     div(v-else)
         plant-card-big(:plant-id="plantId")
         journal(:plant-id="plantId")

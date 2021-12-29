@@ -1,7 +1,7 @@
 <template lang="pug">
 section
-    h3(v-if='loading' ) Loading...
-    b-card-group(v-else columns)
+    loading(v-if='loading')
+    card-grid(v-else)
         plant-card(
             v-for='plant in plants' :key='plant.id'
             :id="plant.id"
@@ -13,7 +13,7 @@ section
 <script>
 import PlantCard from './PlantCard'
 import { getDeadPlants } from '@/apis/apis'
-import { errorToast } from '@/helpers/ui'
+//import { errorToast } from '@/helpers/ui'
 export default {
   components: {
     plantCard: PlantCard,
@@ -32,7 +32,7 @@ export default {
       try {
         this.plants = await getDeadPlants()
       } catch (err) {
-        this.$bvToast.toast(`Plants can't be retrieved`, errorToast)
+        //this.$bvToast.toast(`Plants can't be retrieved`, errorToast)
       } finally {
         this.loading = false
       }

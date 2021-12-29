@@ -1,19 +1,17 @@
 <template lang="pug">
-    b-card.mb-2.no-body(
-        style="max-width: 20rem;"
-    )
-        b-card-img-lazy(:src="imageUrl" :alt="name" top ref="image")
-        b-card-body(:title="name")
-            b-card-text
-                p {{ $t("plantCard.nextWatering", { days: untilNextWatering}) }}
-            b-button(variant="primary" size="lg" v-on:click="onWater" v-t="'plantCard.waterIt'")
-            router-link(:to="{ name: 'plant', params: { plantId: id}}")
-                b-button.ml-2(v-t="'plantCard.details'")
+div
+  card
+    card-image(:src="imageUrl" :alt="name" @width="onWidth")
+    card-body(:title="name")
+      p {{ $t("plantCard.nextWatering", { days: untilNextWatering}) }}
+      regular-button(v-on:click="onWater" :text="$t('plantCard.waterIt')")
+      router-link(:to="{ name: 'plant', params: { plantId: id}}")
+          secondary-button(:text="$t('plantCard.details')")
 </template>
 <script>
 import { getImageUrl } from '@/apis/helpers'
 import { waterPlant } from '@/apis/apis'
-import { errorToast } from '@/helpers/ui'
+//import { errorToast } from '@/helpers/ui'
 export default {
   props: {
     name: {
@@ -39,16 +37,10 @@ export default {
   },
   data: function () {
     return {
-      imageWidth: 0,
+      imageUrl: null,
     }
   },
   computed: {
-    imageUrl: function () {
-      if (this.imagePath && this.imageWidth) {
-        return getImageUrl(this.imagePath, this.imageWidth)
-      }
-      return null
-    },
     untilNextWatering: function () {
       let nextWatering = new Date(this.lastWatering)
       let date = new Date(this.lastWatering)
@@ -59,9 +51,6 @@ export default {
       return Math.round(diff)
     },
   },
-  mounted: function () {
-    this.calculateWidth()
-  },
   methods: {
     async onWater(evt) {
       evt.preventDefault()
@@ -70,11 +59,11 @@ export default {
         this.$emit('plant-watered', this.id, response)
       } catch (err) {
         console.log(err)
-        this.$bvToast.toast(`Plants could not be watered`, errorToast)
+        //this.$bvToast.toast(`Plants could not be watered`, errorToast)
       }
     },
-    calculateWidth() {
-      this.imageWidth = this.$refs.image.$el.clientWidth
+    onWidth(width) {
+      this.imageUrl = getImageUrl(this.imagePath, width)
     },
   },
 }

@@ -1,25 +1,18 @@
 <template lang="pug">
 section
-    b-form(@submit="onSubmit" @reset="onReset"  v-if="show")
-        b-form-group(
-            id="message-input-group"
-            :label="$t('addJournalEntry.insertEntryManually')"
-            label-for="message"
-        )
-            b-input-group
-                b-form-input(
-                    id="message"
-                    name="messae"
-                    v-model="form.message"
-                    type="text"
-                    :placeholder="$t('addJournalEntry.messageContent')"
-                )
-                b-input-group-append
-                    b-button(type="submit" variant="primary" v-t="'addJournalEntry.add'")
+    form(@submit="onSubmit" v-if="show")
+      text-input(
+        :name="message"
+        :label="$t('addJournalEntry.insertEntryManually')"
+        :placeholder="$t('addJournalEntry.messageContent')"
+        @update="form.message = $event"
+        required
+      )
+      submit-button(:text="$t('addJournalEntry.add')")
 </template>
 <script>
 import { postJournalEntry } from '@/apis/apis'
-import { errorToast, okToast } from '@/helpers/ui'
+//import { errorToast, okToast } from '@/helpers/ui'
 export default {
   props: {
     plantId: {
@@ -40,21 +33,11 @@ export default {
       try {
         evt.preventDefault()
         await postJournalEntry(this.plantId, this.form)
-        this.$bvToast.toast(`Journal entry added`, okToast)
+        //this.$bvToast.toast(`Journal entry added`, okToast)
         this.onReset()
       } catch (err) {
-        this.$bvToast.toast(`Journal entry could not be added`, errorToast)
+        //this.$bvToast.toast(`Journal entry could not be added`, errorToast)
       }
-    },
-    onReset(evt) {
-      if (evt) {
-        evt.preventDefault()
-      }
-      this.form.message = ''
-      this.show = false
-      this.$nextTick(() => {
-        this.show = true
-      })
     },
   },
 }

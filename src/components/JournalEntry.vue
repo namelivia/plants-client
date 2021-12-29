@@ -1,8 +1,8 @@
 <template lang="pug">
-    b-card.mb-2
-        b-card-text
-            p.mb-0 {{formattedDate}}
-            p.mb-0 {{message}}
+    card
+      card-body
+        p.mb-0 {{formattedDate}}
+        p.mb-0 {{message}}
 </template>
 <script>
 export default {

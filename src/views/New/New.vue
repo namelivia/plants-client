@@ -8,7 +8,7 @@ section
 import router from '@/router'
 import PlantForm from '@/components/PlantForm'
 import { postPlant } from '@/apis/apis'
-import { errorToast, okToast } from '@/helpers/ui'
+//import { errorToast, okToast } from '@/helpers/ui'
 export default {
   components: {
     PlantForm,
@@ -18,10 +18,10 @@ export default {
       try {
         await postPlant(data)
         router.replace('/list', () => {
-          this.$root.$bvToast.toast(`Plant ${data.name} created`, okToast)
+          //this.$root.$bvToast.toast(`Plant ${data.name} created`, okToast)
         })
       } catch (err) {
-        this.$bvToast.toast(`Plant could not be created`, errorToast)
+        //this.$bvToast.toast(`Plant could not be created`, errorToast)
       }
     },
   },

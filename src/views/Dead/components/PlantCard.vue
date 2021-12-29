@@ -1,11 +1,10 @@
 <template lang="pug">
-    b-card.mb-2.no-body(
-        style="max-width: 20rem;"
-    )
-        b-card-img-lazy(:src="imageUrl" :alt="name" top ref="image")
-        b-card-body(:title="name")
-            router-link(:to="{ name: 'plant', params: { plantId: id}}")
-                b-button.ml-2(v-t="'plantCard.details'")
+div
+  card
+    card-image(:src="imageUrl" :alt="name" @width="onWidth")
+    card-body(:title="name")
+      router-link(:to="{ name: 'plant', params: { plantId: id}}")
+          secondary-button(:text="$t('plantCard.details')")
 </template>
 <script>
 import { getImageUrl } from '@/apis/helpers'
@@ -26,23 +25,12 @@ export default {
   },
   data: function () {
     return {
-      imageWidth: 0,
+      imageUrl: null,
     }
   },
-  computed: {
-    imageUrl: function () {
-      if (this.imagePath && this.imageWidth) {
-        return getImageUrl(this.imagePath, this.imageWidth)
-      }
-      return null
-    },
-  },
-  mounted: function () {
-    this.calculateWidth()
-  },
   methods: {
-    calculateWidth() {
-      this.imageWidth = this.$refs.image.$el.clientWidth
+    onWidth(width) {
+      this.imageUrl = getImageUrl(this.imagePath, width)
     },
   },
 }
