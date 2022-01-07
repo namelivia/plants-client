@@ -1,23 +1,23 @@
 <template lang="pug">
-    form(@submit="onSubmit" @reset="onReset"  v-if="show")
-        text-input(
-          :name="name"
-          :label="$t('plantForm.name')"
-          :placeholder="$t('plantForm.enterPlantName')"
-          @update="plant.name = $event"
-          required
-        )
-        text-input(
-          :name="description"
-          :label="$t('plantForm.description')"
-          :placeholder="$t('plantForm.enterPlantDescription')"
-          @update="plant.description = $event"
-          required
-        )
-        resize-image-upload(@loaded="onImageLoaded")
-        .mt-4
-        submit-button.mr-2(:text="$t('newPlant.submit')")
-        reset-button(:text="$t('newPlant.reset')")
+form(@submit="onSubmit" @reset="onReset"  v-if="show")
+    text-input(
+      :name="name"
+      :label="$t('plantForm.name')"
+      :placeholder="$t('plantForm.enterPlantName')"
+      @update="plant.name = $event"
+      required
+    )
+    text-input(
+      :name="description"
+      :label="$t('plantForm.description')"
+      :placeholder="$t('plantForm.enterPlantDescription')"
+      @update="plant.description = $event"
+      required
+    )
+    resize-image-upload(@loaded="onImageLoaded")
+    .mt-4
+    submit-button.mr-2(:text="$t('newPlant.submit')")
+    reset-button(:text="$t('newPlant.reset')")
 </template>
 <script>
 import { postImage } from '@/apis/apis'
