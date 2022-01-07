@@ -6,7 +6,7 @@ section
 
 <script>
 import router from '@/router'
-import PlantForm from '@/components/PlantForm'
+import PlantForm from '@/components/PlantForm.vue'
 import { postPlant } from '@/apis/apis'
 //import { errorToast, okToast } from '@/helpers/ui'
 export default {

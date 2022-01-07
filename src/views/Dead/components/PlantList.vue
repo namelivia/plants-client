@@ -11,7 +11,7 @@ section
 </template>
 
 <script>
-import PlantCard from './PlantCard'
+import PlantCard from '@/views/Dead/components/PlantCard.vue'
 import { getDeadPlants } from '@/apis/apis'
 //import { errorToast } from '@/helpers/ui'
 export default {

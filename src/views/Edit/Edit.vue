@@ -8,7 +8,7 @@ section
 import router from '@/router'
 import { getPlant, putPlant } from '@/apis/apis'
 //import { errorToast, okToast } from '@/helpers/ui'
-import PlantForm from '@/components/PlantForm'
+import PlantForm from '@/components/PlantForm.vue'
 export default {
   components: {
     PlantForm,

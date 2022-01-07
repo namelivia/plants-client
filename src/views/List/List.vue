@@ -5,7 +5,7 @@ section
 </template>
 
 <script>
-import PlantList from './components/PlantList'
+import PlantList from '@/views/List/components/PlantList.vue'
 export default {
   components: {
     PlantList: PlantList,

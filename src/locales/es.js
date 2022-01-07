@@ -1,0 +1,47 @@
+const messages = {
+  es: {
+    navigation: {
+      title: 'App Plantas',
+      list: 'Lista',
+      new: 'Nueva',
+      dead: 'Muertas',
+    },
+    welcome: {
+      welcome: 'Bienvenido a la app de plantas',
+    },
+    list: {
+      title: 'Lista de plantas',
+    },
+    plantCard: {
+      waterIt: 'Regarla',
+      details: 'Detalles',
+      nextWatering: 'Próximo riego en {days} días',
+    },
+    plantDetails: {
+      name: 'Nombre',
+      description: 'Descripción',
+      waterEvery: 'Regar cada',
+      days: 'días',
+      lastWatering: 'Último riego',
+      nextWatering: 'Próximo riego',
+      deleteIt: 'Eliminarla',
+      killIt: 'Matarla',
+    },
+    addJournalEntry: {
+      add: 'Añadir',
+      insertEntryManually: 'Añadir entrada manual:',
+      messageContent: 'Contenido del mensaje',
+    },
+    newPlant: {
+      name: 'Nombre:',
+      enterPlantName: 'Introduce el nombre',
+      description: 'Descripción:',
+      enterPlantDescription: 'Introduce la descripción',
+      image: 'Imagen:',
+      imageForThePlant: 'Imagen de la planta',
+      submit: 'Guardar',
+      reset: 'Limpiar',
+    },
+  },
+}
+export default messages

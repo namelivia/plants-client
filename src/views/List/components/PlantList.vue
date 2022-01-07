@@ -14,7 +14,7 @@ section
 </template>
 
 <script>
-import PlantCard from './PlantCard'
+import PlantCard from '@/views/List/components/PlantCard.vue'
 import { getPlants } from '@/apis/apis'
 //import { errorToast, okToast } from '@/helpers/ui'
 export default {

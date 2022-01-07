@@ -20,13 +20,9 @@
         reset-button(:text="$t('newPlant.reset')")
 </template>
 <script>
-import ResizeImageUpload from '@/components/ResizeImageUpload'
 import { postImage } from '@/apis/apis'
 //import { errorToast } from '@/helpers/ui'
 export default {
-  components: {
-    ResizeImageUpload,
-  },
   props: {
     initialData: {
       type: Object,
@@ -57,6 +53,7 @@ export default {
       },
     },
   },
+  emits: ['submit'],
   methods: {
     onImageLoaded(newImage) {
       this.plant.image = newImage

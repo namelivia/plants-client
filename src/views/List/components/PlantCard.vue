@@ -51,6 +51,7 @@ export default {
       return Math.round(diff)
     },
   },
+  emits: ['plant-watered'],
   methods: {
     async onWater(evt) {
       evt.preventDefault()
