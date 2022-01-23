@@ -17,9 +17,15 @@
     "vue-router": "^4.0.12"
   },
   "devDependencies": {
+<<<<<<< Updated upstream
     "@babel/core": "^7.16.10",
     "@babel/preset-env": "^7.16.11",
     "@namelivia/vue-components": "^1.0.2",
+=======
+    "@babel/core": "^7.16.7",
+    "@babel/preset-env": "^7.16.8",
+    "@namelivia/vue-components": "^1.1.1",
+>>>>>>> Stashed changes
     "@vitejs/plugin-vue": "^2.0.1",
     "@vue/compiler-sfc": "^3.2.27",
     "autoprefixer": "^10.4.2",
