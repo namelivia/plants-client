@@ -26,6 +26,10 @@ export default {
       type: Number,
       default: 0,
     },
+    untilNextWatering: {
+      type: Number,
+      default: 0,
+    },
     imagePath: {
       type: String,
       default: '@/assets/images/image-placeholder.png',
@@ -39,17 +43,6 @@ export default {
     return {
       imageUrl: null,
     }
-  },
-  computed: {
-    untilNextWatering: function () {
-      let nextWatering = new Date(this.lastWatering)
-      let date = new Date(this.lastWatering)
-      nextWatering.setDate(date.getDate() + this.waterEvery)
-      const now = new Date()
-      let diff = (nextWatering.getTime() - now.getTime()) / 1000
-      diff /= 86400
-      return Math.round(diff)
-    },
   },
   emits: ['plant-watered'],
   methods: {

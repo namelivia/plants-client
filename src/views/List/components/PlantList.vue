@@ -8,6 +8,7 @@ section
             :name="plant.name"
             :image-path="plant.image"
             :water-every="plant.water_every"
+            :until-next-watering="plant.until_next_watering"
             :last-watering="plant.last_watering"
             @plant-watered="onPlantWatered"
         )
