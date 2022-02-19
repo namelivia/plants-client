@@ -5,7 +5,7 @@ section(v-else)
     p.mb-0 Id: {{ plant.id}}
     p.mb-0 {{$t("plantDetails.name")}}: {{ plant.name }}
     p.mb-0 {{$t("plantDetails.description")}}: {{ plant.description }}
-    p.mb-0 {{$t("plantDetails.waterEvery")}}: {{ plant.days_until_watering }} {{$t("plantDetails.days")}}
+    p.mb-0 {{$t("plantDetails.waterEvery")}}: {{ plant.water_every }} {{$t("plantDetails.days")}}
     p.mb-0 {{$t("plantDetails.lastWatering")}}: {{formattedLastWatering}}
     p {{$t("plantDetails.nextWatering")}}: {{formattedNextWatering}}
     router-link(:to="{ name: 'edit', params: { plantId: this.plant.id}}")
@@ -39,7 +39,7 @@ export default {
     formattedNextWatering: function () {
       let copy = new Date(this.plant.last_watering)
       let date = new Date(this.plant.last_watering)
-      copy.setDate(date.getDate() + this.plant.days_until_watering)
+      copy.setDate(date.getDate() + this.plant.water_every)
       return copy.toLocaleString()
     },
     imageUrl: function () {

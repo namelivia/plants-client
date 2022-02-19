@@ -22,7 +22,7 @@ export default {
       type: Number,
       default: 0,
     },
-    daysUntilWatering: {
+    waterEvery: {
       type: Number,
       default: 0,
     },
@@ -44,7 +44,7 @@ export default {
     untilNextWatering: function () {
       let nextWatering = new Date(this.lastWatering)
       let date = new Date(this.lastWatering)
-      nextWatering.setDate(date.getDate() + this.daysUntilWatering)
+      nextWatering.setDate(date.getDate() + this.waterEvery)
       const now = new Date()
       let diff = (nextWatering.getTime() - now.getTime()) / 1000
       diff /= 86400

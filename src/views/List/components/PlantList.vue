@@ -7,7 +7,7 @@ section
             :id="plant.id"
             :name="plant.name"
             :image-path="plant.image"
-            :days-until-watering="plant.days_until_watering"
+            :water-every="plant.water_every"
             :last-watering="plant.last_watering"
             @plant-watered="onPlantWatered"
         )
