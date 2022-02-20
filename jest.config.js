@@ -1,10 +1,9 @@
 module.exports = {
-  moduleFileExtensions: ["js", "json", "vue"],
+  moduleFileExtensions: ['js', 'json', 'vue'],
   transform: {
-    ".*\\.(vue)$": "vue-jest",
-    ".*\\.(js)$": "babel-jest",
+    '.*\\.(vue)$': 'vue-jest',
   },
   collectCoverage: true,
-  collectCoverageFrom: ["src/**/*.{js,vue}"],
-  setupFiles: ["./test-setup.js"],
-};
+  collectCoverageFrom: ['src/**/*.{js,vue}'],
+  setupFiles: ['./test-setup.js'],
+}
