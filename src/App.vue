@@ -1,13 +1,18 @@
 <template lang="pug">
 .h-screen
   navbar(:links="links" :locale="$i18n.locale" :current-user-email="currentUserEmail")
+  alert(message="Algo no funciona" details="Y este es el mensaje de detalle")
   div(class="container mx-auto")
       router-view
 </template>
 
 <script>
 import { store } from '@namelivia/vue-currentuser'
+import Alert from '@/components/Alert.vue'
 export default {
+  components: {
+    Alert,
+  },
   data: function () {
     return {
       currentUserEmail: undefined,
