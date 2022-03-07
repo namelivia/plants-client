@@ -11,7 +11,7 @@ div
 <script>
 import { getImageUrl } from '@/apis/helpers'
 import { waterPlant } from '@/apis/apis'
-//import { errorToast } from '@/helpers/ui'
+import { useToast } from 'vue-toastification'
 export default {
   props: {
     name: {
@@ -47,13 +47,14 @@ export default {
   emits: ['plant-watered'],
   methods: {
     async onWater(evt) {
+      const toast = useToast()
       evt.preventDefault()
       try {
         const response = await waterPlant(this.id)
         this.$emit('plant-watered', this.id, response)
       } catch (err) {
         console.log(err)
-        //this.$bvToast.toast(`Plants could not be watered`, errorToast)
+        toast.error(`Plants could not be watered`)
       }
     },
     onWidth(width) {

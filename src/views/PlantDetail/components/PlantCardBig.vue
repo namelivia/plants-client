@@ -17,7 +17,7 @@ section(v-else)
 <script>
 import { getPlant, killPlant, deletePlant } from '@/apis/apis'
 import { getImageUrl } from '@/apis/helpers'
-//import { errorToast, okToast } from '@/helpers/ui'
+import { useToast } from 'vue-toastification'
 import router from '@/router'
 export default {
   props: {
@@ -59,35 +59,36 @@ export default {
   },
   methods: {
     async loadPlant(plantId) {
+      const toast = useToast()
       try {
         this.plant = await getPlant(plantId)
       } catch (err) {
-        //this.$bvToast.toast(`Plant can't be retrieved`, errorToast)
+        toast.error(`Plant can't be retrieved`)
       } finally {
         this.loading = false
       }
     },
     async onKill(evt) {
       evt.preventDefault()
+      const toast = useToast()
       try {
         await killPlant(this.plant.id)
-        router.replace('/dead', () => {
-          //this.$root.$bvToast.toast(`Plant killed`, okToast)
-        })
+        toast.success(`Plant killed`)
+        router.replace('/dead')
       } catch (err) {
         console.log(err)
-        //this.$bvToast.toast(`Plant could not be killed`, errorToast)
+        toast.error(`Plant could not be killed`)
       }
     },
     async onDelete(evt) {
+      const toast = useToast()
       evt.preventDefault()
       try {
-        deletePlant(this.plant.id)
-        router.replace('/list', () => {
-          //this.$root.$bvToast.toast(`Plant removed`, okToast)
-        })
+        await deletePlant(this.plant.id)
+        toast.success(`Plant removed`)
+        router.replace('/list')
       } catch (err) {
-        //this.$bvToast.toast(`Plant could not be removed`, errorToast)
+        toast.error(`Plant could not be removed`)
       }
     },
   },

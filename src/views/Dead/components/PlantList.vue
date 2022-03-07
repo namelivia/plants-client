@@ -13,7 +13,7 @@ section
 <script>
 import PlantCard from '@/views/Dead/components/PlantCard.vue'
 import { getDeadPlants } from '@/apis/apis'
-//import { errorToast } from '@/helpers/ui'
+import { useToast } from 'vue-toastification'
 export default {
   components: {
     plantCard: PlantCard,
@@ -29,10 +29,11 @@ export default {
   },
   methods: {
     async loadList() {
+      const toast = useToast()
       try {
         this.plants = await getDeadPlants()
       } catch (err) {
-        //this.$bvToast.toast(`Plants can't be retrieved`, errorToast)
+        toast.error(`Plants can't be retrieved`)
       } finally {
         this.loading = false
       }
