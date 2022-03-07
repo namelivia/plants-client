@@ -17,7 +17,7 @@ section
 <script>
 import PlantCard from '@/views/List/components/PlantCard.vue'
 import { getPlants } from '@/apis/apis'
-//import { errorToast, okToast } from '@/helpers/ui'
+import { useToast } from 'vue-toastification'
 export default {
   components: {
     plantCard: PlantCard,
@@ -33,19 +33,21 @@ export default {
   },
   methods: {
     async loadList() {
+      const toast = useToast()
       try {
         this.plants = await getPlants()
       } catch (err) {
-        //this.$bvToast.toast(`Plants can't be retrieved`, errorToast)
+        toast.error(`Plants can't be retrieved`)
       } finally {
         this.loading = false
       }
     },
     onPlantWatered(plantId, response) {
+      const toast = useToast()
       const index = this.plants.findIndex((plant) => plant.id === plantId)
       if (index > -1) {
         this.plants[index].last_watering = response.data.last_watering
-        //this.$bvToast.toast(`Plant watered`, okToast)
+        toast.success(`Plant watered`)
       }
     },
   },

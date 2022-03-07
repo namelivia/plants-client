@@ -34,4 +34,5 @@ export default {
 
 <style lang="css">
 @import './assets/styles/custom.css';
+@import 'vue-toastification/dist/index.css';
 </style>

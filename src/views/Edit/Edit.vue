@@ -7,7 +7,7 @@ section
 <script>
 import router from '@/router'
 import { getPlant, putPlant } from '@/apis/apis'
-//import { errorToast, okToast } from '@/helpers/ui'
+import { useToast } from 'vue-toastification'
 import PlantForm from '@/components/PlantForm.vue'
 export default {
   components: {
@@ -34,6 +34,7 @@ export default {
   },
   methods: {
     async loadPlant() {
+      const toast = useToast()
       try {
         const plant = await getPlant(this.plantId)
         //TODO: I can't do this using the spread operator
@@ -41,7 +42,7 @@ export default {
         this.form.description = plant.description
         this.form.image = plant.image
       } catch (err) {
-        //this.$bvToast.toast(`Plant can't be retrieved`, errorToast)
+        toast.error(`Plant can't be retrieved`)
       } finally {
         this.loading = false
       }
@@ -49,11 +50,10 @@ export default {
     async onSubmit(data) {
       try {
         await putPlant(this.plantId, data)
-        router.replace('/list', () => {
-          //this.$root.$bvToast.toast(`Plant ${data.name} created`, okToast)
-        })
+        toast.success(`Plant ${data.name} created`)
+        router.replace('/list')
       } catch (err) {
-        //this.$bvToast.toast(`Plant could not be updated`, errorToast)
+        toast.error(`Plant could not be updated`)
       }
     },
   },

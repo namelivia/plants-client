@@ -21,7 +21,7 @@ form(@submit="onSubmit" @reset="onReset"  v-if="show")
 </template>
 <script>
 import { postImage } from '@/apis/apis'
-//import { errorToast } from '@/helpers/ui'
+import { useToast } from 'vue-toastification'
 export default {
   props: {
     initialData: {
@@ -61,10 +61,11 @@ export default {
     async uploadImage() {
       //After creating if the plant upload image if has it
       if (this.plant.image) {
+        const toast = useToast()
         try {
           this.plant.image = await postImage(this.plant.image)
         } catch (err) {
-          //this.$bvToast.toast(`Image could not be loaded`, errorToast)
+          toast.error(`Image could not be loaded`)
         }
       }
     },

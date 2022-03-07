@@ -8,20 +8,20 @@ section
 import router from '@/router'
 import PlantForm from '@/components/PlantForm.vue'
 import { postPlant } from '@/apis/apis'
-//import { errorToast, okToast } from '@/helpers/ui'
+import { useToast } from 'vue-toastification'
 export default {
   components: {
     PlantForm,
   },
   methods: {
     async onSubmit(data) {
+      const toast = useToast()
       try {
         await postPlant(data)
-        router.replace('/list', () => {
-          //this.$root.$bvToast.toast(`Plant ${data.name} created`, okToast)
-        })
+        toast.success(`Plant ${data.name} created`)
+        router.replace('/list')
       } catch (err) {
-        //this.$bvToast.toast(`Plant could not be created`, errorToast)
+        toast.error(`Plant could not be created`)
       }
     },
   },
