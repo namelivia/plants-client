@@ -48,6 +48,7 @@ export default {
       }
     },
     async onSubmit(data) {
+      const toast = useToast()
       try {
         await putPlant(this.plantId, data)
         toast.success(`Plant ${data.name} created`)
