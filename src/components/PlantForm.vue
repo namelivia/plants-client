@@ -3,12 +3,14 @@ form(@submit="onSubmit" @reset="onReset"  v-if="show")
     text-input(
       :name="name"
       :label="$t('plantForm.name')"
+      :text="plant.name"
       :placeholder="$t('plantForm.enterPlantName')"
       @update="plant.name = $event"
       required
     )
     text-input(
       :name="description"
+      :text="plant.description"
       :label="$t('plantForm.description')"
       :placeholder="$t('plantForm.enterPlantDescription')"
       @update="plant.description = $event"
