@@ -51,7 +51,7 @@ export default {
       const toast = useToast()
       try {
         await putPlant(this.plantId, data)
-        toast.success(`Plant ${data.name} created`)
+        toast.success(`Plant ${data.name} updated`)
         router.replace('/list')
       } catch (err) {
         toast.error(`Plant could not be updated`)
