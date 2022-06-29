@@ -27,11 +27,10 @@ export default {
   },
   computed: {
     imageBigUrl: function () {
-      return new URL('assets/images/plants-logo-big.svg', import.meta.url).href
+      return new URL('assets/images/logo-big.svg', import.meta.url).href
     },
     imageSmallUrl: function () {
-      return new URL('assets/images/plants-logo-small.svg', import.meta.url)
-        .href
+      return new URL('assets/images/logo-small.svg', import.meta.url).href
     },
   },
   mounted() {
