@@ -5,7 +5,7 @@ section(v-else)
     p.mb-0 Id: {{ plant.id}}
     p.mb-0 {{$t("plantDetails.name")}}: {{ plant.name }}
     p.mb-0 {{$t("plantDetails.description")}}: {{ plant.description }}
-    p.mb-0 {{$t("plantDetails.waterEvery")}}: {{ plant.water_every }} {{$t("plantDetails.days")}}
+    update-watering-schedule(@submit="onWaterEveryUpdate" :days="plant.water_every")
     p.mb-0 {{$t("plantDetails.lastWatering")}}: {{formattedLastWatering}}
     p {{$t("plantDetails.nextWatering")}}: {{formattedNextWatering}}
     router-link(:to="{ name: 'edit', params: { plantId: this.plant.id}}")
@@ -15,9 +15,15 @@ section(v-else)
 </template>
 
 <script>
-import { getPlant, killPlant, deletePlant } from '@/apis/apis'
+import {
+  getPlant,
+  killPlant,
+  deletePlant,
+  updateWateringSchedule,
+} from '@/apis/apis'
 import { getImageUrl } from '@/apis/helpers'
 import { useToast } from 'vue-toastification'
+import UpdateWateringSchedule from '@/components/UpdateWateringSchedule.vue'
 import router from '@/router'
 export default {
   props: {
@@ -25,6 +31,9 @@ export default {
       type: Number,
       default: 0,
     },
+  },
+  components: {
+    UpdateWateringSchedule,
   },
   data: function () {
     return {
@@ -78,6 +87,16 @@ export default {
       } catch (err) {
         console.log(err)
         toast.error(`Plant could not be killed`)
+      }
+    },
+    async onWaterEveryUpdate(days) {
+      const toast = useToast()
+      try {
+        await updateWateringSchedule(this.plant.id, days)
+        toast.success(`Plant watering schedule updated`)
+      } catch (err) {
+        console.log(err)
+        toast.error(`Plant watering schedule could not be updated`)
       }
     },
     async onDelete(evt) {

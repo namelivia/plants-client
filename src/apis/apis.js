@@ -50,6 +50,14 @@ export const waterPlant = async (plantId) => {
   return response
 }
 
+export const updateWateringSchedule = async (plantId, days) => {
+  const response = await axios.post(
+    `${import.meta.env.VITE_APP_API_ENDPOINT}/plants/${plantId}/water_every`,
+    { days: days },
+  )
+  return response.data
+}
+
 export const killPlant = async (plantId) => {
   const response = await axios.post(
     `${import.meta.env.VITE_APP_API_ENDPOINT}/plants/${plantId}/kill`,
