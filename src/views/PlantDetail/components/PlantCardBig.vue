@@ -12,6 +12,7 @@ section(v-else)
         secondary-button(:text="$t('plantCard.editIt')")
     danger-button.ml-4(@click="onKill" :text="$t('plantDetails.killIt')")
     danger-button.ml-2(@click="onDelete" :text="$t('plantDetails.deleteIt')")
+    modal(:open="deleteModalOpen" @cancel="onDeleteModalClose" @confirm="onDeleteConfirm")
 </template>
 
 <script>
@@ -39,6 +40,7 @@ export default {
     return {
       plant: null,
       loading: true,
+      deleteModalOpen: false,
     }
   },
   computed: {
@@ -100,6 +102,15 @@ export default {
       }
     },
     async onDelete(evt) {
+      evt.preventDefault()
+      this.deleteModalOpen = true
+    },
+    async onDeleteModalClose(evt) {
+      evt.preventDefault()
+      this.deleteModalOpen = false
+    },
+    async onDeleteConfirm(evt) {
+      this.deleteModalOpen = false
       const toast = useToast()
       evt.preventDefault()
       try {
