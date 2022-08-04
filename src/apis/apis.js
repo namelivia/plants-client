@@ -13,6 +13,13 @@ export const getPlants = async () => {
   return response.data
 }
 
+export const getDryPlants = async () => {
+  const response = await axios.get(
+    `${import.meta.env.VITE_APP_API_ENDPOINT}/plants/to_be_watered`,
+  )
+  return response.data
+}
+
 export const getDeadPlants = async () => {
   const response = await axios.get(
     `${import.meta.env.VITE_APP_API_ENDPOINT}/plants/dead`,
