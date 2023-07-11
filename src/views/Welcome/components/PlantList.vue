@@ -1,26 +1,30 @@
 <template lang="pug">
 section
     loading(v-if='loading')
-    card-grid(v-else)
-        plant-card(
-            v-for='plant in plants' :key='plant.id'
-            :id="plant.id"
-            :name="plant.name"
-            :image-path="plant.image"
-            :water-every="plant.water_every"
-            :until-next-watering="plant.until_next_watering"
-            :last-watering="plant.last_watering"
-            @plant-watered="onPlantWatered"
-        )
+    div(v-else)
+        water-all-plants(@all-plants-watered="onAllPlantsWatered")
+        card-grid
+            plant-card(
+                v-for='plant in plants' :key='plant.id'
+                :id="plant.id"
+                :name="plant.name"
+                :image-path="plant.image"
+                :water-every="plant.water_every"
+                :until-next-watering="plant.until_next_watering"
+                :last-watering="plant.last_watering"
+                @plant-watered="onPlantWatered"
+            )
 </template>
 
 <script>
+import WaterAllPlants from '@/views/Welcome/components/WaterAllPlants.vue'
 import PlantCard from '@/views/Welcome/components/PlantCard.vue'
 import { getDryPlants } from '@/apis/apis'
 import { useToast } from 'vue-toastification'
 export default {
   components: {
     plantCard: PlantCard,
+    waterAllPlants: WaterAllPlants,
   },
   data: function () {
     return {
@@ -41,6 +45,10 @@ export default {
       } finally {
         this.loading = false
       }
+    },
+    onAllPlantsWatered(evt) {
+      const toast = useToast()
+      toast.success(`All plants watered`)
     },
     onPlantWatered(plantId, response) {
       const toast = useToast()

@@ -8,6 +8,7 @@ const messages = {
     },
     welcome: {
       welcome: 'Welcome to the plants app',
+      waterAllPlants: 'Water all plants',
     },
     list: {
       title: 'Plant list',
@@ -52,6 +53,7 @@ const messages = {
     },
     welcome: {
       welcome: 'Bienvenido a la app de plantas',
+      waterAllPlants: 'Regar todas las plantas',
     },
     list: {
       title: 'Lista de plantas',

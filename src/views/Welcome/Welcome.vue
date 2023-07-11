@@ -5,6 +5,7 @@ section
 </template>
 <script>
 import PlantList from '@/views/Welcome/components/PlantList.vue'
+import { useToast } from 'vue-toastification'
 export default {
   components: {
     PlantList: PlantList,
