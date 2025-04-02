@@ -1,5 +1,5 @@
 describe('e2e tests', () => {
-  it('welcome page', () => {
+  it('Welcome page', () => {
     cy.intercept('GET', 'https://plants.localhost.pomerium.io/api/users/me', {
       fixture: 'users/me',
     }).as('getMe')
@@ -28,5 +28,15 @@ describe('e2e tests', () => {
     ).as('waterAllPlants')
     cy.visit('/')
     cy.contains('Water all plants').click()
+  })
+
+  it('Plant details page', () => {
+    cy.intercept('GET', 'https://plants.localhost.pomerium.io/api/users/me', {
+      fixture: 'users/me',
+    }).as('getMe')
+    cy.intercept('GET', 'https://plants.localhost.pomerium.io/api/plants/1', {
+      fixture: 'plants/plant_details',
+    }).as('getPlant')
+    cy.visit('/plant/1')
   })
 })

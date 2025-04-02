@@ -5,6 +5,7 @@ section(v-else)
     p.mb-0 Id: {{ plant.id}}
     p.mb-0 {{$t("plantDetails.name")}}: {{ plant.name }}
     p.mb-0 {{$t("plantDetails.description")}}: {{ plant.description }}
+    p.mb-0 {{$t("plantDetails.indoor")}}: {{ plant.indoor ? $t("plantDetails.indoor") : $t("plantDetails.outdoor") }}
     update-watering-schedule(@submit="onWaterEveryUpdate" :days="plant.water_every")
     p.mb-0 {{$t("plantDetails.lastWatering")}}: {{formattedLastWatering}}
     p {{$t("plantDetails.nextWatering")}}: {{formattedNextWatering}}
