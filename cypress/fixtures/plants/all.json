@@ -8,7 +8,8 @@
     "until_next_watering": 6,
     "journaling_key": "838c2a01-4a62-43b1-84a9-ea14f554d19d",
     "last_watering": "2023-07-10T21:46:14.272045",
-    "alive": true
+    "alive": true,
+    "indoor": true
   },
   {
     "name": "Plant 2",
@@ -19,7 +20,8 @@
     "until_next_watering": 6,
     "journaling_key": "dab5b1fd-d12c-4e61-8f73-b39f30074ff3",
     "last_watering": "2023-07-10T21:46:15.925961",
-    "alive": true
+    "alive": true,
+    "indoor": false
   },
   {
     "name": "Plant 3",
@@ -30,6 +32,7 @@
     "until_next_watering": 6,
     "journaling_key": "1eb3e386-22a0-4984-b21f-fe7bed025cfa",
     "last_watering": "2023-07-10T21:46:18.124652",
-    "alive": true
+    "alive": true,
+    "indoor": true
   }
 ]
