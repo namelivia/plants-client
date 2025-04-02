@@ -12,8 +12,8 @@ importers:
         specifier: ^1.6.3
         version: 1.6.3(vue@3.5.13)
       '@namelivia/vue-currentuser':
-        specifier: ^0.0.6
-        version: 0.0.6(axios@1.7.9)
+        specifier: ^0.0.7
+        version: 0.0.7(axios@1.7.9)
       axios:
         specifier: ^1.6.8
         version: 1.7.9
@@ -440,8 +440,8 @@ packages:
     peerDependencies:
       vue: ^3.4.19
 
-  '@namelivia/vue-currentuser@0.0.6':
-    resolution: {integrity: sha512-v24by3CyTno9u6hsayFqSRRrt7XaQsRmYm2rs2qkcKHwyMZW2Nc9pxMCBeyAkcdGrBLHy7zAw/DDU0jrQ225EA==}
+  '@namelivia/vue-currentuser@0.0.7':
+    resolution: {integrity: sha512-0MhHYSC9xkk+W4FJtUcPtcEXirFxFUL9dbvF0dZazfkfYQrjraSu0LMQ4QDTMqZtO+BoROYWbmgzC/bqLkO8Vw==}
     peerDependencies:
       axios: ^1.6.8
 
@@ -3335,7 +3335,7 @@ snapshots:
       image-blob-reduce: 4.1.0
       vue: 3.5.13
 
-  '@namelivia/vue-currentuser@0.0.6(axios@1.7.9)':
+  '@namelivia/vue-currentuser@0.0.7(axios@1.7.9)':
     dependencies:
       axios: 1.7.9
 
