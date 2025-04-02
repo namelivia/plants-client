@@ -19,7 +19,7 @@
     "vue-toastification": "^2.0.0-rc.5"
   },
   "devDependencies": {
-    "@namelivia/vue-currentuser": "^0.0.4",
+    "@namelivia/vue-currentuser": "^0.0.6",
     "@vitejs/plugin-vue": "^2.3.4",
     "@vue/compiler-sfc": "^3.4.26",
     "autoprefixer": "^10.4.19",
