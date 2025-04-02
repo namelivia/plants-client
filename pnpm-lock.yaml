@@ -11,6 +11,9 @@ importers:
       '@namelivia/vue-components':
         specifier: ^1.6.3
         version: 1.6.3(vue@3.5.13)
+      '@namelivia/vue-currentuser':
+        specifier: ^0.0.6
+        version: 0.0.6(axios@1.7.9)
       axios:
         specifier: ^1.6.8
         version: 1.7.9
@@ -27,9 +30,6 @@ importers:
         specifier: ^2.0.0-rc.5
         version: 2.0.0-rc.5(vue@3.5.13)
     devDependencies:
-      '@namelivia/vue-currentuser':
-        specifier: ^0.0.6
-        version: 0.0.6(axios@1.7.9)
       '@vitejs/plugin-vue':
         specifier: ^2.3.4
         version: 2.3.4(vite@2.9.18)(vue@3.5.13)
