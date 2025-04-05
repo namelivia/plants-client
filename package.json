@@ -15,7 +15,7 @@
     "@namelivia/vue-components": "^1.6.3",
     "axios": "^1.8.2",
     "vue": "^3.4.26",
-    "vue-i18n": "^9.14.3",
+    "vue-i18n": "^11.1.2",
     "vue-router": "^4.3.2",
     "vue-toastification": "^2.0.0-rc.5"
   },
