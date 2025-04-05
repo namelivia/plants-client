@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@namelivia/vue-components':
-        specifier: ^1.6.3
-        version: 1.6.3(vue@3.5.13)
+        specifier: ^2.1.0
+        version: 2.1.0(vue@3.5.13)
       '@namelivia/vue-currentuser':
         specifier: ^0.0.7
         version: 0.0.7(axios@1.8.2)
@@ -561,10 +561,10 @@ packages:
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
 
-  '@namelivia/vue-components@1.6.3':
-    resolution: {integrity: sha512-ekwFCqEtWWJoJnWMRUxKa+tRZxHtV7vjW0eZT3s9v/pscHgA5D6EeoPti85uYJWTJA74sFs2zZ3N4YeK0++JIA==}
+  '@namelivia/vue-components@2.1.0':
+    resolution: {integrity: sha512-fA0BSxCz/KFbOpTV2MLvIfyuEQjAAWbPaW7YeBLccWuJgs+SXaL5XyF5pAXnXKC28PY7jj4u3hhRXPJ1syqLdA==}
     peerDependencies:
-      vue: ^3.4.19
+      vue: ^3.5.13
 
   '@namelivia/vue-currentuser@0.0.7':
     resolution: {integrity: sha512-0MhHYSC9xkk+W4FJtUcPtcEXirFxFUL9dbvF0dZazfkfYQrjraSu0LMQ4QDTMqZtO+BoROYWbmgzC/bqLkO8Vw==}
@@ -3415,7 +3415,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
-  '@namelivia/vue-components@1.6.3(vue@3.5.13)':
+  '@namelivia/vue-components@2.1.0(vue@3.5.13)':
     dependencies:
       image-blob-reduce: 4.1.0
       vue: 3.5.13
