@@ -10,14 +10,10 @@ WORKDIR /app
 # Copy dependency files and source code
 COPY package.json pnpm-lock.yaml ./
 COPY . .
-
-# build stage for development
-FROM base-builder as development-builder
 RUN pnpm install --dev
 
 # build stage for production
 FROM base-builder as production-builder
-RUN pnpm install --prod
 RUN pnpm run build
 
 # production stage
@@ -28,6 +24,6 @@ EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 
 # development stage
-FROM development-builder as development
+FROM base-builder as development
 EXPOSE 4173
 CMD ["pnpm", "run", "serve", "--host=0.0.0.0"]
