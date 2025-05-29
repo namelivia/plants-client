@@ -7,9 +7,6 @@ updates:
     day: saturday
   open-pull-requests-limit: 10
   ignore:
-  - dependency-name: y18n
+  - dependency-name: tailwindcss
     versions:
-    - 4.0.1
-  - dependency-name: husky
-    versions:
-    - 5.1.0
+      - ">=4.0.0"

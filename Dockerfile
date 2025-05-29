@@ -1,17 +1,24 @@
 # base builder stage
-FROM node:16.13.1-alpine as base-builder
+FROM node:22.16.0-alpine as base-builder
+env CI=true
+
+# Install pnpm
+RUN corepack enable && corepack prepare pnpm@10.11.0 --activate
+
 WORKDIR /app
-COPY package*.json ./
+
+# Copy dependency files and source code
+COPY package.json pnpm-lock.yaml ./
 COPY . .
 
 # build stage for development
 FROM base-builder as development-builder
-RUN npm install --also=dev
+RUN pnpm install --dev
 
 # build stage for production
 FROM base-builder as production-builder
-RUN npm install
-RUN npm run build
+RUN pnpm install --prod
+RUN pnpm run build
 
 # production stage
 FROM nginx:stable-alpine as production
@@ -23,4 +30,4 @@ CMD ["nginx", "-g", "daemon off;"]
 # development stage
 FROM development-builder as development
 EXPOSE 8080
-CMD ["npm", "run", "serve"]
+CMD ["npm", "run", "serve", "--host"]
