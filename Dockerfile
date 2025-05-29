@@ -29,5 +29,5 @@ CMD ["nginx", "-g", "daemon off;"]
 
 # development stage
 FROM development-builder as development
-EXPOSE 8080
-CMD ["npm", "run", "serve", "--host"]
+EXPOSE 4173
+CMD ["pnpm", "run", "serve", "--host"]
