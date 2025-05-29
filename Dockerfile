@@ -30,4 +30,4 @@ CMD ["nginx", "-g", "daemon off;"]
 # development stage
 FROM development-builder as development
 EXPOSE 4173
-CMD ["pnpm", "run", "serve", "--host"]
+CMD ["pnpm", "run", "serve", "--host=0.0.0.0"]
