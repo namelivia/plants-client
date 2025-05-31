@@ -1,12 +1,10 @@
 <template lang="pug">
 div
-  card
-    card-image(:src="imageUrl" :alt="name" @width="onWidth")
-    card-body(:title="name")
-      p {{ $t("plantCard.nextWatering", { days: untilNextWatering}) }}
-      regular-button(@click="onWater" :text="$t('plantCard.waterIt')")
-      router-link(:to="{ name: 'plant', params: { plantId: id}}")
-          secondary-button(:text="$t('plantCard.details')")
+  card(:image="imageUrl" :title="name" @width="onWidth")
+    p {{ $t("plantCard.nextWatering", { days: untilNextWatering}) }}
+    regular-button(@click="onWater" :text="$t('plantCard.waterIt')")
+    router-link(:to="{ name: 'plant', params: { plantId: id}}")
+      secondary-button(:text="$t('plantCard.details')")
 </template>
 <script>
 import { getImageUrl } from '@/apis/helpers'

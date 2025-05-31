@@ -1,10 +1,8 @@
 <template lang="pug">
 div
-  card
-    card-image(:src="imageUrl" :alt="name" @width="onWidth")
-    card-body(:title="name")
-      router-link(:to="{ name: 'plant', params: { plantId: id}}")
-          secondary-button(:text="$t('plantCard.details')")
+  card(:image="imageUrl" :title="name" @width="onWidth")
+    router-link(:to="{ name: 'plant', params: { plantId: id}}")
+      secondary-button(:text="$t('plantCard.details')")
 </template>
 <script>
 import { getImageUrl } from '@/apis/helpers'
