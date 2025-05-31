@@ -9,8 +9,10 @@ WORKDIR /app
 
 # Copy dependency files and source code
 COPY package.json pnpm-lock.yaml ./
+RUN pnpm install --frozen-lockfile --dev && \
+    pnpm install --frozen-lockfile
+
 COPY . .
-RUN pnpm install --dev
 
 # build stage for production
 FROM base-builder as production-builder
