@@ -3,9 +3,12 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - main 
+      - main
     tags:
       - '*'
+  pull_request:
+    branches:
+      - main
 jobs:
   setup:
     runs-on: ubuntu-latest
@@ -30,12 +33,12 @@ jobs:
           target: development
           load: true
           tags: plants-client-testing:latest
-      - 
+      -
         name: Run tests
         uses: addnab/docker-run-action@v1
         with:
           image: plants-client-testing:latest
-          shell: sh 
+          shell: sh
           run: sh /app/run_tests_ci ${{ github.sha }} ${{ secrets.CODECOV_TOKEN }}
       -
         name: Set up production Docker Buildx
@@ -64,14 +67,14 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - 
+      -
         name: Determine Docker tag
         id: docker_tag
         run: |
           if [ "${{ github.ref }}" == "refs/heads/main" ]; then
             echo "TAG=latest" >> $GITHUB_ENV
           elif [[ "${{ github.ref }}" == refs/tags/* ]]; then
-            VERSION_TAG=${{ github.ref }} 
+            VERSION_TAG=${{ github.ref }}
             VERSION_TAG=${VERSION_TAG/refs\/tags\//}
             echo "TAG=${VERSION_TAG}" >> $GITHUB_ENV
           fi
