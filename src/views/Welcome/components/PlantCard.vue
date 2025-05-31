@@ -1,6 +1,6 @@
 <template lang="pug">
 div
-  card(:image="imageUrl" :title="name" @width="onWidth")
+  card(:image="imageUrl" :title="name" @width="onWidth" :dismissed="dismissed")
     p {{ $t("plantCard.nextWatering", { days: untilNextWatering}) }}
     regular-button(@click="onWater" :text="$t('plantCard.waterIt')")
     router-link(:to="{ name: 'plant', params: { plantId: id}}")
@@ -40,6 +40,7 @@ export default {
   data: function () {
     return {
       imageUrl: null,
+      dismissed: false,
     }
   },
   emits: ['plant-watered'],
@@ -50,6 +51,7 @@ export default {
       try {
         const response = await waterPlant(this.id)
         this.$emit('plant-watered', this.id, response)
+        this.dismissed = true
       } catch (err) {
         console.log(err)
         toast.error(`Plants could not be watered`)
