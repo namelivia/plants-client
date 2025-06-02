@@ -53,13 +53,13 @@ export default {
       }
     },
     async onNewJournalEntry(evt) {
-       console.log('New journal entry:', evt) 
-        this.journal.push({
-                message: evt,
-                timestamp: new Date().toISOString(),
-                id: 'temp-' + Math.random().toString(36).substr(2, 9),
-        })
-    }
+      console.log('New journal entry:', evt)
+      this.journal.push({
+        message: evt,
+        timestamp: new Date().toISOString(),
+        id: 'temp-' + Math.random().toString(36).substr(2, 9),
+      })
+    },
   },
 }
 </script>
