@@ -54,13 +54,23 @@ describe('e2e tests', () => {
         
     })
 
-  it('Plant details page', () => {
+  it.only('Plant details page', () => {
     cy.intercept('GET', 'https://plants.localhost.pomerium.io/api/users/me', {
       fixture: 'users/me',
     }).as('getMe')
     cy.intercept('GET', 'https://plants.localhost.pomerium.io/api/plants/1', {
       fixture: 'plants/plant_details',
     }).as('getPlant')
+    cy.intercept('GET', 'https://plants.localhost.pomerium.io/api/plants/1/journal', {
+      fixture: 'plants/plant_journal',
+    }).as('getPlantJournal')
+    cy.intercept(
+      'POST',
+      'https://plants.localhost.pomerium.io/api/plants/1/journal',
+      { statusCode: 201 },
+    ).as('addJournalEntry')
     cy.visit('/plant/1')
+    cy.get('.text-input-field').type('This is a test journal entry')
+    cy.get('#add-journal-entry-submit').click()
   })
 })
