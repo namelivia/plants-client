@@ -1,12 +1,12 @@
 {
-"name": "Plant 1",
-"description": "Just a plant",
-"image": "/image/080ed8e021594025b34f9f1f1ef68650/None",
-"id": 1,
-"water_every": 7,
-"until_next_watering": 6,
-"journaling_key": "838c2a01-4a62-43b1-84a9-ea14f554d19d",
-"last_watering": "2023-07-10T21:46:14.272045",
-"alive": true,
-"indoor": true
+  "name": "Plant 1",
+  "description": "Just a plant",
+  "image": "/image/080ed8e021594025b34f9f1f1ef68650/None",
+  "id": 1,
+  "water_every": 7,
+  "until_next_watering": 6,
+  "journaling_key": "838c2a01-4a62-43b1-84a9-ea14f554d19d",
+  "last_watering": "2023-07-10T21:46:14.272045",
+  "alive": true,
+  "indoor": true
 }
