@@ -7,7 +7,7 @@ section(v-else)
         :message="entry.message"
         :timestamp="entry.timestamp"
       )
-    add-journal-entry.mt-4(:plant-id="this.id")
+    add-journal-entry.mt-4(:plant-id="this.id" @newJournalEntry="onNewJournalEntry")
 </template>
 <script>
 import { getJournal } from '@/apis/apis'
@@ -51,6 +51,14 @@ export default {
       } finally {
         this.loading = false
       }
+    },
+    async onNewJournalEntry(evt) {
+      console.log('New journal entry:', evt)
+      this.journal.push({
+        message: evt,
+        timestamp: new Date().toISOString(),
+        id: 'temp-' + Math.random().toString(36).substr(2, 9),
+      })
     },
   },
 }
