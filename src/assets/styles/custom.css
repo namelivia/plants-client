@@ -4,6 +4,9 @@
 
 :root {
   /* BUTTONS */
+  --button-padding: 0.5rem 1rem;
+  --button-transition: background-color 0.2s ease-in-out;
+  --button-border: none;
   /* Danger */
   --color-danger: hsl(0, 84%, 58%);
   --color-danger-text: hsl(0, 0%, 100%);
@@ -86,4 +89,21 @@
   --font-size-small: 0.875rem;
   --font-size-large: 1.25rem;
   --font-size-xlarge: 3.75rem;
+  /* SPACING */
+  --badge-margin-right: 0.5rem;
+  --badge-padding: 0.125rem 0.625rem;
+  --badge-border-radius: 0.25rem;
+  --card-margin: 2rem;
+  --card-max-witdh: 24rem;
+  --card-body-padding: 1.5rem 1.5rem;
+  --card-title-margin-bottom: 0.5rem;
+  /* SHADOWS */
+  --card-shadow: 0 4px 6px var(--color-card-shadow);
+  /* BORDER-RADIUS */ 
+  --border-radius-base: 0.25rem;
+  --border-radius-big: 0.25rem;
+  --border-radius-round: 50%;
+  /* CONTAINER */
+  --container-max-width: 1200px;
+  --container-marging: 0 auto;
 }
