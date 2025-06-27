@@ -2,7 +2,7 @@
 section
     loading(v-if='loading')
     div(v-else)
-        water-all-plants(@all-plants-watered="onAllPlantsWatered")
+        water-all-plants(@all-plants-watered="onAllPlantsWatered" v-if="plants.length > 0")
         card-grid
             plant-card(
                 v-for='plant in plants' :key='plant.id'
