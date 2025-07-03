@@ -12,7 +12,7 @@ describe('e2e tests', () => {
     cy.contains('Welcome to the plants app')
   })
 
-  it('Water all plants button', () => {
+  it.only('Water all plants button', () => {
     cy.intercept('GET', 'https://plants.localhost.pomerium.io/api/users/me', {
       fixture: 'users/me',
     }).as('getMe')
@@ -24,10 +24,15 @@ describe('e2e tests', () => {
     cy.intercept(
       'POST',
       'https://plants.localhost.pomerium.io/api/plants/water_all',
-      { statusCode: 204 },
+      {
+          statusCode: 204,
+          delay: 2000,
+      },
     ).as('waterAllPlants')
     cy.visit('/')
     cy.contains('Water all plants').click()
+    cy.contains('Watering all plants...').should('be.visible')
+    cy.wait('@waterAllPlants')
   })
 
   it('When marking one plant as watered the card is dismissed', () => {
