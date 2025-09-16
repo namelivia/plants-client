@@ -18,6 +18,10 @@ const messages = {
       waterIt: 'Water it',
       details: 'Details',
       nextWatering: 'Next watering in {days} days',
+      editIt: 'Edit it'
+    },
+    waterEvery: {
+      update: 'Update watering'
     },
     plantDetails: {
       name: 'Name',
@@ -66,6 +70,10 @@ const messages = {
       waterIt: 'Regarla',
       details: 'Detalles',
       nextWatering: 'Próximo riego en {days} días',
+      editIt: 'Editarla'
+    },
+    waterEvery: {
+      update: 'Actualizar riego'
     },
     plantDetails: {
       name: 'Nombre',
